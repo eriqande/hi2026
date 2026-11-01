@@ -1,0 +1,152 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "",
+    "text": "Welcome\nWelcome to the Hawaiʻi CKMR Workshop 2026, taught by Mark Bravington and Eric Anderson.\nThis is our course web page: a clearinghouse for links to the slides, exercises, code, data, and other materials you will need. We will update it as the workshop goes along. Many of the materials will be hosted on the instructors’ GitHub pages or in their GitHub repositories; we will introduce them and add links here as we use them.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#prepare-your-laptop",
+    "href": "index.html#prepare-your-laptop",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "Prepare your laptop",
+    "text": "Prepare your laptop\nPlease prepare R and the packages for both instructors’ hands-on exercises before the workshop. R 4.6.x is the recommended starting point, with pre-built packages for a broad range of supported Mac and Windows systems. Mark’s packages also have builds for other R versions, including R 4.5.x on Mac and Windows; see his setup page for the platform/version options.\nInstallation commands for required packages can be run in the R console. See the following links for explicit commands.\n\nInstall packages for Mark’s hands-on exercises\nInstall packages and prepare for Eric’s hands-on exercises",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#workshop-agenda",
+    "href": "index.html#workshop-agenda",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "Workshop agenda",
+    "text": "Workshop agenda\nThe current agenda is below. Exactly what happens when is flexible: we will adjust to the pace of the workshop. The three additional workshop days after the formal course offer a chance to explore topics more deeply and to work on specific fisheries/species of interest.\nDownload the original agenda (PDF)\n\nMonday, November 9\n\nIntroduction: principles, scope, and workshop overview\nParent-offspring pairs (POPs): simple marine mammal example and model\nGotchas #1: because nothing is ever that simple…\n\n\n\nTuesday, November 10\n\nHalf-sibling pairs (HSPs): shark example\nGotchas #2: HSPs are a rich source of gotchas\nAnd so to fish: basic CKMR-driven fish model\nGenetics and kin-finding #1: principles\n\n\n\nWednesday, November 11\n\nMissing/uncertain data: usually this means age\nFish: a semi-realistic model. The 3rd loop?\nCase study #1: school sharks\nKin-finding and genetics #2: worked examples\n\n\n\nThursday, November 12\n\nCase study #2: southern bluefin tuna\nDesign #1: so important!\nCase study #3: western Atlantic bluefin tuna and/or bearded seals\n\n\n\nFriday, November 13\n\nDesign #2: worked example\nSpatial CKMR: the wild west\n\n\n\nSaturday, November 14, or Sunday, November 15\n\nThings we missed…\nProject/topic deep dives: to be decided during the workshop\n\n\n\nMonday, November 16\n\nMore deep diving\n\n\n\nTuesday, November 17\n\nMore deep diving",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#course-materials",
+    "href": "index.html#course-materials",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "Course materials",
+    "text": "Course materials\nMark’s course repository is the starting point for his workshop materials. Access may require signing in to GitHub with an account that has been added as a collaborator. We will introduce the materials separately during the course; you do not need repository access to install Mark’s packages.\nLinks to slides, exercises, and other resources will be added as the workshop progresses.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "mark-setup.html",
+    "href": "mark-setup.html",
+    "title": "Mark’s setup",
+    "section": "",
+    "text": "Choose an R version\nInstall these packages before the 2026 workshop if you plan to run Mark’s hands-on exercises on your laptop. These instructions cover package dependencies; the scripts, datasets, and other course materials will get their own introduction.\nYou do not need access to Mark’s course GitHub repository for this setup: his packages are distributed through R-universe.\nR 4.6.x is our recommended starting point, but it is not a strict requirement for Mark’s exercises. If you already use R 4.5.x on Mac or Windows, try the installation and checks below before upgrading.\nMark’s R-universe build matrix currently shows the following builds for his packages (checked October 29, 2026):\nR 4.7 builds are useful if you already use development R; there is no need to switch to a development version for this course.\nUse the package-loading checks below to confirm your own installation, including the CRAN dependencies. lyxport is not needed for this course.",
+    "crumbs": [
+      "Mark's setup"
+    ]
+  },
+  {
+    "objectID": "mark-setup.html#choose-an-r-version",
+    "href": "mark-setup.html#choose-an-r-version",
+    "title": "Mark’s setup",
+    "section": "",
+    "text": "R version\nPlatforms shown in the build matrix\n\n\n\n\n4.6.x (recommended)\nWindows, Linux, macOS, and WebAssembly (browser-based R)\n\n\n4.5.x\nWindows and macOS\n\n\n4.7 (development version)\nWindows and Linux",
+    "crumbs": [
+      "Mark's setup"
+    ]
+  },
+  {
+    "objectID": "mark-setup.html#install-the-packages",
+    "href": "mark-setup.html#install-the-packages",
+    "title": "Mark’s setup",
+    "section": "Install the packages",
+    "text": "Install the packages\nStart a fresh R session. Set the repositories to include Mark’s R-universe and CRAN:\noptions(repos = c(\n  MarkBravington = \"https://markbravington.r-universe.dev\",\n  CRAN = \"https://cloud.r-project.org\"\n))\nInstall the CRAN packages first:\ninstall.packages(c(\"doParallel\", \"RTMB\"))\nIf that succeeds, install Mark’s package collection. mvbjoblot brings in all the other packages needed for his exercises:\ninstall.packages(\"mvbjoblot\")\nUse Mark’s R-universe distributions for his packages. Older versions on CRAN may be out of date; downloading his individual package repositories from GitHub is unnecessary.\n\n\n\n\n\n\nNoteRepository settings last for this R session\n\n\n\nIf you restart R before installing or reinstalling Mark’s packages, run the options(repos = ...) block again.",
+    "crumbs": [
+      "Mark's setup"
+    ]
+  },
+  {
+    "objectID": "mark-setup.html#check-your-installation",
+    "href": "mark-setup.html#check-your-installation",
+    "title": "Mark’s setup",
+    "section": "Check your installation",
+    "text": "Check your installation\nTry loading the packages with the most dependencies:\nlibrary(offartmb)\nlibrary(deconvodisc)\nlibrary(despack)\nIf all three load without errors, your package setup is ready.",
+    "crumbs": [
+      "Mark's setup"
+    ]
+  },
+  {
+    "objectID": "mark-setup.html#if-installation-fails",
+    "href": "mark-setup.html#if-installation-fails",
+    "title": "Mark’s setup",
+    "section": "If installation fails",
+    "text": "If installation fails\nAn installation error does not necessarily prevent you from participating. Save the error message so we can see which package failed.\n\n\n\n\n\n\nTipTroubleshooting and the minimum package set\n\n\n\n\n\nThe packages Matrix, Rcpp, and TMB can have version conflicts. If the error points to these packages, try reinstalling them in that order. Run the repository-settings block above first if you have restarted R.\ninstall.packages(\"Matrix\")\ninstall.packages(\"Rcpp\")\ninstall.packages(\"TMB\")\nThen retry the failed installation. If an error specifically requires installing Rcpp or TMB from source, you will need the appropriate build tools.\nThe full set of non-default CRAN dependencies listed in the original cribsheet is doParallel, foreach, iterators, Rcpp, RcppEigen, RTMB, and TMB; Matrix can also be involved in version conflicts.\nFor most exercises, the essential packages are mvbutils, atease, and offarray. Loading offarray also loads the other two:\nlibrary(offarray)\nThe design exercises additionally need microscoping and despack:\nlibrary(microscoping)\nlibrary(despack)\ndeconvodisc is used in a couple of examples. offartmb supports fitting examples with RTMB, an optional alternative to the native R fits. If TMB or RTMB will not install, you can still follow much of the course using the native R examples.\n\n\n\nAdapted for 2026 from the installation section of Mark Bravington’s July 2024 R cribsheet (with thanks to Laura Tremblay-Boyer and Shane Baylis).",
+    "crumbs": [
+      "Mark's setup"
+    ]
+  },
+  {
+    "objectID": "eric-setup.html",
+    "href": "eric-setup.html",
+    "title": "Eric’s setup",
+    "section": "",
+    "text": "Build tools\nFor Eric’s exercises, use R 4.6.x or R 4.5.x. Install CKMRsim from GitHub, and install the packages needed for CKMRshiny. RStudio Desktop is helpful but optional.\nCKMRsim contains compiled code and installs from source when downloaded from GitHub. If you don’t already have them, set up the build tools for your operating system.",
+    "crumbs": [
+      "Eric's setup"
+    ]
+  },
+  {
+    "objectID": "eric-setup.html#build-tools",
+    "href": "eric-setup.html#build-tools",
+    "title": "Eric’s setup",
+    "section": "",
+    "text": "Windows\nInstall the toolchain recommended for your R version on the official Rtools page. R 4.6 uses Rtools45; the toolchain number does not always match the R version. Use the default installer settings, then restart RStudio (or R) before continuing.\n\n\nmacOS\nInstall Apple’s Command Line Tools for Xcode. Run the following in Terminal, rather than the R console, and follow the installation prompts:\nxcode-select --install\nIf the tools are already installed, macOS will tell you. CKMRsim uses C/C++ through Rcpp.\n\n\nLinux\nInstall the C/C++ compiler, make, and R development files supplied by your distribution. On Debian/Ubuntu, these are generally provided by build-essential and r-base-dev. Some tidyverse dependencies may also need system libraries; use the installation error messages to identify any missing development packages.",
+    "crumbs": [
+      "Eric's setup"
+    ]
+  },
+  {
+    "objectID": "eric-setup.html#install-r-packages",
+    "href": "eric-setup.html#install-r-packages",
+    "title": "Eric’s setup",
+    "section": "Install R packages",
+    "text": "Install R packages\nRun these commands in the R console:\ninstall.packages(\n  c(\"remotes\", \"tidyverse\", \"shiny\"),\n  repos = \"https://cloud.r-project.org\"\n)\n\nremotes::install_github(\"eriqande/CKMRsim\", build_vignettes = FALSE)\nCKMRsim’s required R dependencies are installed automatically. Building its vignettes is unnecessary for this setup.",
+    "crumbs": [
+      "Eric's setup"
+    ]
+  },
+  {
+    "objectID": "eric-setup.html#check-the-packages",
+    "href": "eric-setup.html#check-the-packages",
+    "title": "Eric’s setup",
+    "section": "Check the packages",
+    "text": "Check the packages\nThe following should run without errors:\nlibrary(CKMRsim)\nlibrary(tidyverse)\nlibrary(shiny)\nlibrary(ggplot2)\nlibrary(tibble)",
+    "crumbs": [
+      "Eric's setup"
+    ]
+  },
+  {
+    "objectID": "eric-setup.html#download-and-run-ckmrshiny",
+    "href": "eric-setup.html#download-and-run-ckmrshiny",
+    "title": "Eric’s setup",
+    "section": "Download and run CKMRshiny",
+    "text": "Download and run CKMRshiny\nCKMRshiny is a Shiny application, rather than an R package. You do not install it with install_github().\nEric will provide the CKMRshiny repository link with the hands-on materials. Installing the packages above is enough to prepare for now. Once you have that link:\n\nOpen the CKMRshiny repository supplied by Eric.\nChoose Code → Download ZIP, then extract the ZIP to a folder on your laptop.\nIn RStudio, open the extracted folder as a project (or set your working directory to that folder). The folder should contain app.R and the R subfolder.\nRun the app from the R console:\n\nshiny::runApp()\nAlternatively, give runApp() the path to the extracted folder:\nshiny::runApp(\"path/to/CKMRshiny-main\")\nReplace the example path with the actual folder on your computer. The app should open with tabs for equal reproduction, randomly unequal reproduction, and size-based reproduction. Run a small trial to check that plots appear. Stop the app with RStudio’s Stop button or by pressing Esc in the R console.",
+    "crumbs": [
+      "Eric's setup"
+    ]
+  },
+  {
+    "objectID": "eric-setup.html#if-you-get-stuck",
+    "href": "eric-setup.html#if-you-get-stuck",
+    "title": "Eric’s setup",
+    "section": "If you get stuck",
+    "text": "If you get stuck\nRestart R and try loading the packages again. For a CKMRsim installation failure, first check that the compiler tools are installed and read the first error in the installation output. Save that error message and your R version (R.version.string) so we can help diagnose the problem.",
+    "crumbs": [
+      "Eric's setup"
+    ]
+  }
+]

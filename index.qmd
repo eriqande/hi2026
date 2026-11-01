@@ -1,0 +1,71 @@
+# Welcome {.unnumbered}
+
+Welcome to the **Hawaiʻi CKMR Workshop 2026**, taught by Mark Bravington and Eric Anderson.
+
+This is our course web page: a clearinghouse for links to the slides, exercises, code, data, and other materials you will need. We will update it as the workshop goes along. Many of the materials will be hosted on the instructors' GitHub pages or in their GitHub repositories; we will introduce them and add links here as we use them.
+
+## Prepare your laptop
+
+Please prepare R and the packages for both instructors' hands-on exercises before the workshop. **R 4.6.x is the recommended starting point**, with pre-built packages for a broad range of supported Mac and Windows systems. Mark's packages also have builds for other R versions, including **R 4.5.x on Mac and Windows**; see his setup page for the platform/version options.
+
+Installation commands for required packages can be run in the **R console**.  See
+the following links for explicit commands.
+
+- [Install packages for Mark's hands-on exercises](mark-setup.qmd)
+- [Install packages and prepare for Eric's hands-on exercises](eric-setup.qmd)
+
+## Workshop agenda
+
+The current agenda is below. Exactly what happens when is flexible: we will adjust to the pace of the workshop. The three additional workshop days after the formal course offer a chance to explore topics more deeply and to work on specific fisheries/species of interest.
+
+[Download the original agenda (PDF)](background/agenda-v1.pdf)
+
+### Monday, November 9
+
+- **Introduction:** principles, scope, and workshop overview
+- **Parent-offspring pairs (POPs):** simple marine mammal example and model
+- **Gotchas #1:** because nothing is ever that simple…
+
+### Tuesday, November 10
+
+- **Half-sibling pairs (HSPs):** shark example
+- **Gotchas #2:** HSPs are a rich source of gotchas
+- **And so to fish:** basic CKMR-driven fish model
+- **Genetics and kin-finding #1:** principles
+
+### Wednesday, November 11
+
+- **Missing/uncertain data:** usually this means age
+- **Fish:** a semi-realistic model. The 3rd loop?
+- **Case study #1:** school sharks
+- **Kin-finding and genetics #2:** worked examples
+
+### Thursday, November 12
+
+- **Case study #2:** southern bluefin tuna
+- **Design #1:** so important!
+- **Case study #3:** western Atlantic bluefin tuna and/or bearded seals
+
+### Friday, November 13
+
+- **Design #2:** worked example
+- **Spatial CKMR:** the wild west
+
+### Saturday, November 14, or Sunday, November 15
+
+- Things we missed…
+- Project/topic deep dives: to be decided during the workshop
+
+### Monday, November 16
+
+- More deep diving
+
+### Tuesday, November 17
+
+- More deep diving
+
+## Course materials
+
+[Mark's course repository]({{< var mark-repo-url >}}) is the starting point for his workshop materials. Access may require signing in to GitHub with an account that has been added as a collaborator. We will introduce the materials separately during the course; you do not need repository access to install Mark's packages.
+
+Links to slides, exercises, and other resources will be added as the workshop progresses.

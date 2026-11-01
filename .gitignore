@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.quarto/
+.DS_Store
+# Local references only; the website is self-contained.
+.cg
+.CKMRshiny
+/.quarto/
+**/*.quarto_ipynb
+background

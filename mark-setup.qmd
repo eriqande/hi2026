@@ -1,0 +1,102 @@
+# Mark's setup {.unnumbered}
+
+Install these packages before the 2026 workshop if you plan to run Mark's hands-on exercises on your laptop. These instructions cover package dependencies; the scripts, datasets, and other course materials will get their own introduction.
+
+You do not need access to Mark's course GitHub repository for this setup: his packages are distributed through **R-universe**.
+
+## Choose an R version
+
+**R 4.6.x is our recommended starting point**, but it is not a strict requirement for Mark's exercises. If you already use R 4.5.x on Mac or Windows, try the installation and checks below before upgrading.
+
+[Mark's R-universe build matrix](https://markbravington.r-universe.dev/builds) currently shows the following builds for his packages (checked October 29, 2026):
+
+| R version | Platforms shown in the build matrix |
+|:--|:--|
+| **4.6.x (recommended)** | Windows, Linux, macOS, and WebAssembly (browser-based R) |
+| **4.5.x** | Windows and macOS |
+| **4.7 (development version)** | Windows and Linux |
+
+R 4.7 builds are useful if you already use development R; there is no need to switch to a development version for this course. 
+
+Use the package-loading checks below to confirm your own installation, including the CRAN dependencies. **`lyxport` is not needed for this course.**
+
+## Install the packages
+
+Start a fresh R session. Set the repositories to include Mark's R-universe and CRAN:
+
+```r
+options(repos = c(
+  MarkBravington = "https://markbravington.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+```
+
+Install the CRAN packages first:
+
+```r
+install.packages(c("doParallel", "RTMB"))
+```
+
+If that succeeds, install Mark's package collection. `mvbjoblot` brings in
+all the other packages needed for his exercises:
+
+```r
+install.packages("mvbjoblot")
+```
+
+Use Mark's R-universe distributions for his packages. Older versions on CRAN may be out of date; downloading his individual package repositories from GitHub is unnecessary.
+
+::: {.callout-note}
+## Repository settings last for this R session
+
+If you restart R before installing or reinstalling Mark's packages, run the `options(repos = ...)` block again.
+:::
+
+## Check your installation
+
+Try loading the packages with the most dependencies:
+
+```r
+library(offartmb)
+library(deconvodisc)
+library(despack)
+```
+
+If all three load without errors, your package setup is ready.
+
+## If installation fails
+
+An installation error does not necessarily prevent you from participating. Save the error message so we can see which package failed.
+
+::: {.callout-tip collapse="true"}
+## Troubleshooting and the minimum package set
+
+The packages `Matrix`, `Rcpp`, and `TMB` can have version conflicts. If the error points to these packages, try reinstalling them **in that order**. Run the repository-settings block above first if you have restarted R.
+
+```r
+install.packages("Matrix")
+install.packages("Rcpp")
+install.packages("TMB")
+```
+
+Then retry the failed installation. If an error specifically requires installing `Rcpp` or `TMB` from source, you will need the appropriate [build tools](eric-setup.qmd#build-tools).
+
+The full set of non-default CRAN dependencies listed in the original cribsheet is `doParallel`, `foreach`, `iterators`, `Rcpp`, `RcppEigen`, `RTMB`, and `TMB`; `Matrix` can also be involved in version conflicts.
+
+For most exercises, the essential packages are `mvbutils`, `atease`, and `offarray`. Loading `offarray` also loads the other two:
+
+```r
+library(offarray)
+```
+
+The design exercises additionally need `microscoping` and `despack`:
+
+```r
+library(microscoping)
+library(despack)
+```
+
+`deconvodisc` is used in a couple of examples. `offartmb` supports fitting examples with `RTMB`, an optional alternative to the native R fits. If `TMB` or `RTMB` will not install, you can still follow much of the course using the native R examples.
+:::
+
+*Adapted for 2026 from the installation section of Mark Bravington's July 2024 R cribsheet (with thanks to Laura Tremblay-Boyer and Shane Baylis).*

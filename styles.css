@@ -1,0 +1,41 @@
+:root {
+  --workshop-teal: #23686b;
+}
+
+a { color: var(--workshop-teal); }
+
+.instructor-logos {
+  margin: 0 0 1.2rem;
+}
+
+.instructor-logos p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0;
+}
+
+.instructor-logos img {
+  display: block;
+  width: calc(50% - 7px);
+  max-width: 100px;
+  height: auto;
+}
+
+#quarto-sidebar .sidebar-title {
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+h2 {
+  color: var(--workshop-teal);
+}
+
+#workshop-agenda ~ h3 {
+  margin-top: 1.7rem;
+}
+
+.sidebar-footer {
+  font-size: 0.85rem;
+}

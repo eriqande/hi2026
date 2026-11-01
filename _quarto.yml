@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: docs
+  resources:
+    - .nojekyll
+    - background/agenda-v1.pdf
+
+book:
+  title: "Hawaiʻi CKMR Workshop 2026"
+  author:
+    - Mark Bravington
+    - Eric Anderson
+  chapters:
+    - index.qmd
+    - mark-setup.qmd
+    - eric-setup.qmd
+  sidebar:
+    style: docked
+    search: true
+    header: |
+      <div class="instructor-logos">
+      <img src="assets/estimark.png" alt="Estimark Research" class="estimark-logo">
+      <img src="assets/sespe-statgen.png" alt="Sespe StatGen" class="sespe-logo">
+      </div>
+  page-footer: "Hawaiʻi CKMR Workshop · 2026"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+
+execute:
+  eval: false
+
+editor: source
