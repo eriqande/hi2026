@@ -14,6 +14,33 @@ the following links for explicit commands.
 - [Install packages for Mark's hands-on exercises](mark-setup.qmd)
 - [Install packages and prepare for Eric's hands-on exercises](eric-setup.qmd)
 
+## Do Some Pre-Workshop Reading
+
+This course is intended to be "cold-start," meaning we endeavor to build up CKMR
+concepts from their foundations without any prior knowledge needed.  Nonetheless,
+if you wish to read up things before the workshop, or during your flight to the
+Islands, we recommend two readings, each of a different flavor.  
+
+* If you enjoy mathematical statistics and notation, the fundamentals of CKMR are
+  laid out in those terms in [Bravington, Skaug, and Anderson (2016). Close-kin mark-recapture. _Statistical Science_ 31:259-274](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2F16-STS552). 
+* For a more accessible introduction to CKMR, we recommend [Bravington and Carroll (2023). The practical magic of close-kin mark-recapture. CSIRO Publishing](https://github.com/markbravington/hawaii-ckmr-26/blob/master/brav-2025-carroll-chapter-11-CKMR.pdf).  Downloading that requires that you have accepted Mark's invitation to
+his private GitHub repo.
+
+**Highly Recommended/Essential**: Please read [Mark's 2026 R cribsheet (PDF)](background/rcrib26.pdf).
+Reading this ahead of time can help immensely.  Mark has developed an R ecosystem
+of packages and functions, and he relies on R environments for computational efficiency
+and syntactic brevity.  This may be unfamiliar to some R users.  His cribsheet
+provides an essential introduction.  
+
+## BYOS -- Bring Your Own Species
+
+The workshop agenda includes worked examples for a series of different species that
+illustrate real-life scenarios.  In addition, the extended nature of the course is intended
+to provide participants with a chance to apply principles of CKMR design to their
+own species of interest.  For such design, it is not necessary to know everything,
+but we provide brief [BYOS Guidelines](byos-guidelines.qmd) for key pieces of
+information you'll want to be armed with.  
+
 ## Workshop agenda
 
 The current agenda is below. Exactly what happens when is flexible: we will adjust to the pace of the workshop. The three additional workshop days after the formal course offer a chance to explore topics more deeply and to work on specific fisheries/species of interest.
@@ -66,6 +93,6 @@ The current agenda is below. Exactly what happens when is flexible: we will adju
 
 ## Course materials
 
-[Mark's course repository]({{< var mark-repo-url >}}) is the starting point for his workshop materials. Access may require signing in to GitHub with an account that has been added as a collaborator. We will introduce the materials separately during the course; you do not need repository access to install Mark's packages.
+[Mark's course repository]({{< var mark-repo-url >}}) is the starting point for his workshop materials. **The repository will be private during the course.** Mark has invited participants by email; please accept your invitation and sign in to GitHub with the account associated with it to access the materials. We will introduce the materials separately during the course; you do not need repository access to install Mark's packages.
 
 Links to slides, exercises, and other resources will be added as the workshop progresses.

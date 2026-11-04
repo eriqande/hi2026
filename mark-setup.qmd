@@ -2,11 +2,17 @@
 
 Install these packages before the 2026 workshop if you plan to run Mark's hands-on exercises on your laptop. These instructions cover package dependencies; the scripts, datasets, and other course materials will get their own introduction.
 
+Running code is optional for Mark's part of the course: you are welcome to participate by following the concepts without running the examples yourself.
+
 You do not need access to Mark's course GitHub repository for this setup: his packages are distributed through **R-universe**.
+
+[Download Mark's 2026 R cribsheet (PDF)](background/rcrib26.pdf) for the full notes. For installation, copy the commands from this web page: copying code from the PDF can introduce extra spaces, line breaks, and other characters that need cleaning up before R can run it.
 
 ## Choose an R version
 
 **R 4.6.x is our recommended starting point**, but it is not a strict requirement for Mark's exercises. If you already use R 4.5.x on Mac or Windows, try the installation and checks below before upgrading.
+
+Mark expects R 4.5.x to work, but has not tested it recently. The build information below is supplementary guidance: available package builds do not establish that the course examples have been tested with every listed R version.
 
 [Mark's R-universe build matrix](https://markbravington.r-universe.dev/builds) currently shows the following builds for his packages (checked October 29, 2026):
 
@@ -22,13 +28,14 @@ Use the package-loading checks below to confirm your own installation, including
 
 ## Install the packages
 
-Start a fresh R session. Set the repositories to include Mark's R-universe and CRAN:
+Start a fresh R session. Add Mark's R-universe while preserving your existing repositories and including CRAN as a fallback:
 
 ```r
-options(repos = c(
-  MarkBravington = "https://markbravington.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
+options(repos = unique(c(
+  "https://markbravington.r-universe.dev",
+  getOption("repos"),
+  "https://cloud.r-project.org"
+)))
 ```
 
 Install the CRAN packages first:
@@ -58,11 +65,10 @@ Try loading the packages with the most dependencies:
 
 ```r
 library(offartmb)
-library(deconvodisc)
 library(despack)
 ```
 
-If all three load without errors, your package setup is ready.
+If both load without errors, your package setup is ready.
 
 ## If installation fails
 
@@ -96,7 +102,7 @@ library(microscoping)
 library(despack)
 ```
 
-`deconvodisc` is used in a couple of examples. `offartmb` supports fitting examples with `RTMB`, an optional alternative to the native R fits. If `TMB` or `RTMB` will not install, you can still follow much of the course using the native R examples.
+`deconvodisc` is an optional dependency used in a couple of examples; it is not part of the installation check above. `offartmb` supports fitting examples with `RTMB`, an optional alternative to the native R fits. If `TMB` or `RTMB` will not install, you can still follow much of the course using the native R examples.
 :::
 
-*Adapted for 2026 from the installation section of Mark Bravington's July 2024 R cribsheet (with thanks to Laura Tremblay-Boyer and Shane Baylis).*
+*Adapted from the installation section of Mark Bravington's 2026 R cribsheet.*

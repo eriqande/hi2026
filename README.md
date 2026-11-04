@@ -15,7 +15,7 @@ The rendered website goes into `docs/`. R code blocks are displayed as participa
 
 ## Update Mark's repository link
 
-Edit **only `mark-repo-url` in `_variables.yml`**, then run `quarto render`. It currently points to `https://github.com/markbravington/can24`; replace that URL with `https://github.com/markbravington/hi26` if that becomes the course repository.
+Edit **only `mark-repo-url` in `_variables.yml`**, then run `quarto render`. It currently points to `https://github.com/markbravington/hawaii-ckmr-26`.
 
 Use this syntax for every new link to the repository:
 
@@ -23,7 +23,7 @@ Use this syntax for every new link to the repository:
 [Mark's course repository]({{< var mark-repo-url >}})
 ```
 
-The variable only controls the URL; it does not grant access to a private repository. Participants will need to sign in to a GitHub account that Mark has added as a collaborator. Keep private course materials in that repository, rather than copying them into this public site.
+The variable only controls the URL; it does not grant access to a private repository. Mark's repository will be private during the course, and he has invited participants by email. Participants should accept the invitation and sign in to the GitHub account associated with it. Keep private course materials in that repository, rather than copying them into this public site.
 
 ## Edit the site
 

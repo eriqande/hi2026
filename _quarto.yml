@@ -4,6 +4,7 @@ project:
   resources:
     - .nojekyll
     - background/agenda-v1.pdf
+    - background/rcrib26.pdf
 
 book:
   title: "Hawaiʻi CKMR Workshop 2026"
@@ -14,6 +15,7 @@ book:
     - index.qmd
     - mark-setup.qmd
     - eric-setup.qmd
+    - byos-guidelines.qmd
   sidebar:
     style: docked
     search: true

@@ -34,7 +34,7 @@
     "href": "index.html#course-materials",
     "title": "Hawaiʻi CKMR Workshop 2026",
     "section": "Course materials",
-    "text": "Course materials\nMark’s course repository is the starting point for his workshop materials. Access may require signing in to GitHub with an account that has been added as a collaborator. We will introduce the materials separately during the course; you do not need repository access to install Mark’s packages.\nLinks to slides, exercises, and other resources will be added as the workshop progresses.",
+    "text": "Course materials\nMark’s course repository is the starting point for his workshop materials. The repository will be private during the course. Mark has invited participants by email; please accept your invitation and sign in to GitHub with the account associated with it to access the materials. We will introduce the materials separately during the course; you do not need repository access to install Mark’s packages.\nLinks to slides, exercises, and other resources will be added as the workshop progresses.",
     "crumbs": [
       "Welcome"
     ]
@@ -44,7 +44,7 @@
     "href": "mark-setup.html",
     "title": "Mark’s setup",
     "section": "",
-    "text": "Choose an R version\nInstall these packages before the 2026 workshop if you plan to run Mark’s hands-on exercises on your laptop. These instructions cover package dependencies; the scripts, datasets, and other course materials will get their own introduction.\nYou do not need access to Mark’s course GitHub repository for this setup: his packages are distributed through R-universe.\nR 4.6.x is our recommended starting point, but it is not a strict requirement for Mark’s exercises. If you already use R 4.5.x on Mac or Windows, try the installation and checks below before upgrading.\nMark’s R-universe build matrix currently shows the following builds for his packages (checked October 29, 2026):\nR 4.7 builds are useful if you already use development R; there is no need to switch to a development version for this course.\nUse the package-loading checks below to confirm your own installation, including the CRAN dependencies. lyxport is not needed for this course.",
+    "text": "Choose an R version\nInstall these packages before the 2026 workshop if you plan to run Mark’s hands-on exercises on your laptop. These instructions cover package dependencies; the scripts, datasets, and other course materials will get their own introduction.\nRunning code is optional for Mark’s part of the course: you are welcome to participate by following the concepts without running the examples yourself.\nYou do not need access to Mark’s course GitHub repository for this setup: his packages are distributed through R-universe.\nDownload Mark’s 2026 R cribsheet (PDF) for the full notes. For installation, copy the commands from this web page: copying code from the PDF can introduce extra spaces, line breaks, and other characters that need cleaning up before R can run it.\nR 4.6.x is our recommended starting point, but it is not a strict requirement for Mark’s exercises. If you already use R 4.5.x on Mac or Windows, try the installation and checks below before upgrading.\nMark expects R 4.5.x to work, but has not tested it recently. The build information below is supplementary guidance: available package builds do not establish that the course examples have been tested with every listed R version.\nMark’s R-universe build matrix currently shows the following builds for his packages (checked October 29, 2026):\nR 4.7 builds are useful if you already use development R; there is no need to switch to a development version for this course.\nUse the package-loading checks below to confirm your own installation, including the CRAN dependencies. lyxport is not needed for this course.",
     "crumbs": [
       "Mark's setup"
     ]
@@ -64,7 +64,7 @@
     "href": "mark-setup.html#install-the-packages",
     "title": "Mark’s setup",
     "section": "Install the packages",
-    "text": "Install the packages\nStart a fresh R session. Set the repositories to include Mark’s R-universe and CRAN:\noptions(repos = c(\n  MarkBravington = \"https://markbravington.r-universe.dev\",\n  CRAN = \"https://cloud.r-project.org\"\n))\nInstall the CRAN packages first:\ninstall.packages(c(\"doParallel\", \"RTMB\"))\nIf that succeeds, install Mark’s package collection. mvbjoblot brings in all the other packages needed for his exercises:\ninstall.packages(\"mvbjoblot\")\nUse Mark’s R-universe distributions for his packages. Older versions on CRAN may be out of date; downloading his individual package repositories from GitHub is unnecessary.\n\n\n\n\n\n\nNoteRepository settings last for this R session\n\n\n\nIf you restart R before installing or reinstalling Mark’s packages, run the options(repos = ...) block again.",
+    "text": "Install the packages\nStart a fresh R session. Add Mark’s R-universe while preserving your existing repositories and including CRAN as a fallback:\noptions(repos = unique(c(\n  \"https://markbravington.r-universe.dev\",\n  getOption(\"repos\"),\n  \"https://cloud.r-project.org\"\n)))\nInstall the CRAN packages first:\ninstall.packages(c(\"doParallel\", \"RTMB\"))\nIf that succeeds, install Mark’s package collection. mvbjoblot brings in all the other packages needed for his exercises:\ninstall.packages(\"mvbjoblot\")\nUse Mark’s R-universe distributions for his packages. Older versions on CRAN may be out of date; downloading his individual package repositories from GitHub is unnecessary.\n\n\n\n\n\n\nNoteRepository settings last for this R session\n\n\n\nIf you restart R before installing or reinstalling Mark’s packages, run the options(repos = ...) block again.",
     "crumbs": [
       "Mark's setup"
     ]
@@ -74,7 +74,7 @@
     "href": "mark-setup.html#check-your-installation",
     "title": "Mark’s setup",
     "section": "Check your installation",
-    "text": "Check your installation\nTry loading the packages with the most dependencies:\nlibrary(offartmb)\nlibrary(deconvodisc)\nlibrary(despack)\nIf all three load without errors, your package setup is ready.",
+    "text": "Check your installation\nTry loading the packages with the most dependencies:\nlibrary(offartmb)\nlibrary(despack)\nIf both load without errors, your package setup is ready.",
     "crumbs": [
       "Mark's setup"
     ]
@@ -84,7 +84,7 @@
     "href": "mark-setup.html#if-installation-fails",
     "title": "Mark’s setup",
     "section": "If installation fails",
-    "text": "If installation fails\nAn installation error does not necessarily prevent you from participating. Save the error message so we can see which package failed.\n\n\n\n\n\n\nTipTroubleshooting and the minimum package set\n\n\n\n\n\nThe packages Matrix, Rcpp, and TMB can have version conflicts. If the error points to these packages, try reinstalling them in that order. Run the repository-settings block above first if you have restarted R.\ninstall.packages(\"Matrix\")\ninstall.packages(\"Rcpp\")\ninstall.packages(\"TMB\")\nThen retry the failed installation. If an error specifically requires installing Rcpp or TMB from source, you will need the appropriate build tools.\nThe full set of non-default CRAN dependencies listed in the original cribsheet is doParallel, foreach, iterators, Rcpp, RcppEigen, RTMB, and TMB; Matrix can also be involved in version conflicts.\nFor most exercises, the essential packages are mvbutils, atease, and offarray. Loading offarray also loads the other two:\nlibrary(offarray)\nThe design exercises additionally need microscoping and despack:\nlibrary(microscoping)\nlibrary(despack)\ndeconvodisc is used in a couple of examples. offartmb supports fitting examples with RTMB, an optional alternative to the native R fits. If TMB or RTMB will not install, you can still follow much of the course using the native R examples.\n\n\n\nAdapted for 2026 from the installation section of Mark Bravington’s July 2024 R cribsheet (with thanks to Laura Tremblay-Boyer and Shane Baylis).",
+    "text": "If installation fails\nAn installation error does not necessarily prevent you from participating. Save the error message so we can see which package failed.\n\n\n\n\n\n\nTipTroubleshooting and the minimum package set\n\n\n\n\n\nThe packages Matrix, Rcpp, and TMB can have version conflicts. If the error points to these packages, try reinstalling them in that order. Run the repository-settings block above first if you have restarted R.\ninstall.packages(\"Matrix\")\ninstall.packages(\"Rcpp\")\ninstall.packages(\"TMB\")\nThen retry the failed installation. If an error specifically requires installing Rcpp or TMB from source, you will need the appropriate build tools.\nThe full set of non-default CRAN dependencies listed in the original cribsheet is doParallel, foreach, iterators, Rcpp, RcppEigen, RTMB, and TMB; Matrix can also be involved in version conflicts.\nFor most exercises, the essential packages are mvbutils, atease, and offarray. Loading offarray also loads the other two:\nlibrary(offarray)\nThe design exercises additionally need microscoping and despack:\nlibrary(microscoping)\nlibrary(despack)\ndeconvodisc is an optional dependency used in a couple of examples; it is not part of the installation check above. offartmb supports fitting examples with RTMB, an optional alternative to the native R fits. If TMB or RTMB will not install, you can still follow much of the course using the native R examples.\n\n\n\nAdapted from the installation section of Mark Bravington’s 2026 R cribsheet.",
     "crumbs": [
       "Mark's setup"
     ]
@@ -147,6 +147,66 @@
     "text": "If you get stuck\nRestart R and try loading the packages again. For a CKMRsim installation failure, first check that the compiler tools are installed and read the first error in the installation output. Save that error message and your R version (R.version.string) so we can help diagnose the problem.",
     "crumbs": [
       "Eric's setup"
+    ]
+  },
+  {
+    "objectID": "index.html#do-some-pre-workshop-reading",
+    "href": "index.html#do-some-pre-workshop-reading",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "Do Some Pre-Workshop Reading",
+    "text": "Do Some Pre-Workshop Reading\nThis course is intended to be “cold-start,” meaning we endeavor to build up CKMR concepts from their foundations without any prior knowledge needed. Nonetheless, if you wish to read up things before the workshop, or during your flight to the Islands, we recommend two readings, each of a different flavor.\n\nIf you enjoy mathematical statistics and notation, the fundamentals of CKMR are laid out in those terms in Bravington, Skaug, and Anderson (2016). Close-kin mark-recapture. Statistical Science 31:259-274.\nFor a more accessible introduction to CKMR, we recommend Bravington and Carroll (2023). The practical magic of close-kin mark-recapture. CSIRO Publishing. Downloading that requires that you have accepted Mark’s invitation to his private GitHub repo.\n\nHighly Recommended/Essential: Please read Mark’s 2026 R cribsheet (PDF). Reading this ahead of time can help immensely. Mark has developed an R ecosystem of packages and functions, and he relies on R environments for computational efficiency and syntactic brevity. This may be unfamiliar to some R users. His cribsheet provides an essential introduction.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#byos-bring-your-own-species",
+    "href": "index.html#byos-bring-your-own-species",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "BYOS – Bring Your Own Species",
+    "text": "BYOS – Bring Your Own Species\nThe workshop agenda includes worked examples for a series of different species that illustrate real-life scenarios. In addition, the extended nature of the course is intended to provide participants with a chance to apply principles of CKMR design to their own species of interest. For such design, it is not necessary to know everything, but we provide brief BYOS Guidelines for key pieces of information you’ll want to be armed with.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "byos-guidelines.html",
+    "href": "byos-guidelines.html",
+    "title": "BYOS Guidelines",
+    "section": "",
+    "text": "Simple designs\nOur group probably won’t be able to do 30 separate case studies of CKMR design, but we are looking forward to working together on the steps of CKMR design for some different species of interest.\nFor preliminary simple designs (along the lines of Mark’s microscoping package) the data needs are fairly minimal: keeping to the basics is fine, here.\nFor all species you’ll want to have a handle on:",
+    "crumbs": [
+      "BYOS Guidelines"
+    ]
+  },
+  {
+    "objectID": "byos-guidelines.html#simple-designs",
+    "href": "byos-guidelines.html#simple-designs",
+    "title": "BYOS Guidelines",
+    "section": "",
+    "text": "A ballpark estimate of population size\nQualitative features of the species biology\nAny information available on population structure and connectivity\nWhat sort of sampling can be done for the species and the sorts of selectivity such samples might be subjected to.\nFor fish-like species, typical outputs from a recent assessment:\n\nNumbers at age\nWeight at age\nMaturity schedule",
+    "crumbs": [
+      "BYOS Guidelines"
+    ]
+  },
+  {
+    "objectID": "byos-guidelines.html#more-complex-designs",
+    "href": "byos-guidelines.html#more-complex-designs",
+    "title": "BYOS Guidelines",
+    "section": "More complex designs",
+    "text": "More complex designs\nMoving beyond the simple microscoping types of design, be prepared to answer more questions:\n\nWhat is the relationship between fecundity and size?\nAre catch-at-age data/estimates available?\nHow many samples can I age?",
+    "crumbs": [
+      "BYOS Guidelines"
+    ]
+  },
+  {
+    "objectID": "byos-guidelines.html#genotype-data",
+    "href": "byos-guidelines.html#genotype-data",
+    "title": "BYOS Guidelines",
+    "section": "Genotype data",
+    "text": "Genotype data\nSome of you might have genotype data from species of interest. Whether that is just enough to estimate allele frequencies, or is an entire collection of samples, bring those data along and we can explore them with CKMRsim or kinference.",
+    "crumbs": [
+      "BYOS Guidelines"
     ]
   }
 ]

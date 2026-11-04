@@ -211,10 +211,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Install these packages before the 2026 workshop if you plan to run Mark’s hands-on exercises on your laptop. These instructions cover package dependencies; the scripts, datasets, and other course materials will get their own introduction.</p>
+<p>Running code is optional for Mark’s part of the course: you are welcome to participate by following the concepts without running the examples yourself.</p>
 <p>You do not need access to Mark’s course GitHub repository for this setup: his packages are distributed through <strong>R-universe</strong>.</p>
+<p><a href="background/rcrib26.pdf">Download Mark’s 2026 R cribsheet (PDF)</a> for the full notes. For installation, copy the commands from this web page: copying code from the PDF can introduce extra spaces, line breaks, and other characters that need cleaning up before R can run it.</p>
 <section id="choose-an-r-version" class="level2">
 <h2 class="anchored" data-anchor-id="choose-an-r-version">Choose an R version</h2>
 <p><strong>R 4.6.x is our recommended starting point</strong>, but it is not a strict requirement for Mark’s exercises. If you already use R 4.5.x on Mac or Windows, try the installation and checks below before upgrading.</p>
+<p>Mark expects R 4.5.x to work, but has not tested it recently. The build information below is supplementary guidance: available package builds do not establish that the course examples have been tested with every listed R version.</p>
 <p><a href="https://markbravington.r-universe.dev/builds">Mark’s R-universe build matrix</a> currently shows the following builds for his packages (checked October 29, 2026):</p>
 <table class="caption-top table">
 <colgroup>
@@ -247,11 +250,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="install-the-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-the-packages">Install the packages</h2>
-<p>Start a fresh R session. Set the repositories to include Mark’s R-universe and CRAN:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">MarkBravington =</span> <span class="st">"https://markbravington.r-universe.dev"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Start a fresh R session. Add Mark’s R-universe while preserving your existing repositories and including CRAN as a fallback:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">unique</span>(<span class="fu">c</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://markbravington.r-universe.dev"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">getOption</span>(<span class="st">"repos"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://cloud.r-project.org"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Install the CRAN packages first:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"doParallel"</span>, <span class="st">"RTMB"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If that succeeds, install Mark’s package collection. <code>mvbjoblot</code> brings in all the other packages needed for his exercises:</p>
@@ -275,9 +279,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="check-your-installation">Check your installation</h2>
 <p>Try loading the packages with the most dependencies:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(offartmb)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(deconvodisc)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(despack)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If all three load without errors, your package setup is ready.</p>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(despack)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If both load without errors, your package setup is ready.</p>
 </section>
 <section id="if-installation-fails" class="level2">
 <h2 class="anchored" data-anchor-id="if-installation-fails">If installation fails</h2>
@@ -305,11 +308,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The design exercises additionally need <code>microscoping</code> and <code>despack</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microscoping)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(despack)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>deconvodisc</code> is used in a couple of examples. <code>offartmb</code> supports fitting examples with <code>RTMB</code>, an optional alternative to the native R fits. If <code>TMB</code> or <code>RTMB</code> will not install, you can still follow much of the course using the native R examples.</p>
+<p><code>deconvodisc</code> is an optional dependency used in a couple of examples; it is not part of the installation check above. <code>offartmb</code> supports fitting examples with <code>RTMB</code>, an optional alternative to the native R fits. If <code>TMB</code> or <code>RTMB</code> will not install, you can still follow much of the course using the native R examples.</p>
 </div>
 </div>
 </div>
-<p><em>Adapted for 2026 from the installation section of Mark Bravington’s July 2024 R cribsheet (with thanks to Laura Tremblay-Boyer and Shane Baylis).</em></p>
+<p><em>Adapted from the installation section of Mark Bravington’s 2026 R cribsheet.</em></p>
 
 
 </section>
