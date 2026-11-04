@@ -56,12 +56,12 @@ library(tibble)
 ## Download and run CKMRshiny
 
 CKMRshiny is a repository that contains a couple of Shiny applications and a
-few RMarkdown documents, rather than an R package. You do not install it with `install_github()`.
+few R Markdown documents, rather than an R package. You do not install it with `install_github()`.
 
 **Eric will provide the CKMRshiny repository link with the hands-on materials,
-once they are more fully complete**. Installing the packages above is enough to prepare for now. Once you have that link:
+once they are ready**. Installing the packages above is enough to prepare for now. Once you have that link:
 
-_This portion subject to change_
+_This portion is subject to change._
 
 1. Open the CKMRshiny repository supplied by Eric.
 2. Choose **Code → Download ZIP**, then extract the ZIP to a folder on your laptop.

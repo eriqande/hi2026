@@ -14,31 +14,30 @@ the following links for explicit commands.
 - [Install packages for Mark's hands-on exercises](mark-setup.qmd)
 - [Install packages and prepare for Eric's hands-on exercises](eric-setup.qmd)
 
-## Do Some Pre-Workshop Reading
+## Do some pre-workshop reading
 
-This course is intended to be "cold-start," meaning we endeavor to build up CKMR
-concepts from their foundations without any prior knowledge needed.  Nonetheless,
-if you wish to read up things before the workshop, or during your flight to the
-Islands, we recommend two readings, each of a different flavor.  
+This course is intended to provide a "cold start," meaning we build up CKMR
+concepts from their foundations without requiring prior knowledge. Nonetheless,
+if you wish to read up on CKMR before the workshop, or during your flight to
+Hawaiʻi, we recommend two readings, each with a different flavor.
 
 * If you enjoy mathematical statistics and notation, the fundamentals of CKMR are
   laid out in those terms in [Bravington, Skaug, and Anderson (2016). Close-kin mark-recapture. _Statistical Science_ 31:259-274](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2F16-STS552). 
-* For a more accessible introduction to CKMR, we recommend [Bravington and Carroll (2023). The practical magic of close-kin mark-recapture. CSIRO Publishing](https://github.com/markbravington/hawaii-ckmr-26/blob/master/brav-2025-carroll-chapter-11-CKMR.pdf).  Downloading that requires that you have accepted Mark's invitation to
-his private GitHub repo.
+* For a more accessible introduction to CKMR, we recommend [Bravington and Carroll (2023). The practical magic of close-kin mark-recapture. CSIRO Publishing (download PDF)]({{< var mark-repo-url >}}/raw/refs/heads/master/brav-2025-carroll-chapter-11-CKMR.pdf). To download it, accept Mark's emailed invitation to his private GitHub repository and sign in with the GitHub account associated with that invitation.
 
-**Highly Recommended/Essential**: Please read [Mark's 2026 R cribsheet (PDF)](background/rcrib26.pdf).
+**Essential reading:** Please read [Mark's 2026 R cribsheet (PDF)](background/rcrib26.pdf).
 Reading this ahead of time can help immensely.  Mark has developed an R ecosystem
 of packages and functions, and he relies on R environments for computational efficiency
 and syntactic brevity.  This may be unfamiliar to some R users.  His cribsheet
 provides an essential introduction.  
 
-## BYOS -- Bring Your Own Species
+## BYOS — Bring your own species
 
 The workshop agenda includes worked examples for a series of different species that
 illustrate real-life scenarios.  In addition, the extended nature of the course is intended
 to provide participants with a chance to apply principles of CKMR design to their
 own species of interest.  For such design, it is not necessary to know everything,
-but we provide brief [BYOS Guidelines](byos-guidelines.qmd) for key pieces of
+but we provide brief [BYOS guidelines](byos-guidelines.qmd) for key pieces of
 information you'll want to be armed with.  
 
 ## Workshop agenda

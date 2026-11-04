@@ -20,6 +20,26 @@
     ]
   },
   {
+    "objectID": "index.html#do-some-pre-workshop-reading",
+    "href": "index.html#do-some-pre-workshop-reading",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "Do some pre-workshop reading",
+    "text": "Do some pre-workshop reading\nThis course is intended to provide a “cold start,” meaning we build up CKMR concepts from their foundations without requiring prior knowledge. Nonetheless, if you wish to read up on CKMR before the workshop, or during your flight to Hawaiʻi, we recommend two readings, each with a different flavor.\n\nIf you enjoy mathematical statistics and notation, the fundamentals of CKMR are laid out in those terms in Bravington, Skaug, and Anderson (2016). Close-kin mark-recapture. Statistical Science 31:259-274.\nFor a more accessible introduction to CKMR, we recommend Bravington and Carroll (2023). The practical magic of close-kin mark-recapture. CSIRO Publishing (download PDF). To download it, accept Mark’s emailed invitation to his private GitHub repository and sign in with the GitHub account associated with that invitation.\n\nEssential reading: Please read Mark’s 2026 R cribsheet (PDF). Reading this ahead of time can help immensely. Mark has developed an R ecosystem of packages and functions, and he relies on R environments for computational efficiency and syntactic brevity. This may be unfamiliar to some R users. His cribsheet provides an essential introduction.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#byos-bring-your-own-species",
+    "href": "index.html#byos-bring-your-own-species",
+    "title": "Hawaiʻi CKMR Workshop 2026",
+    "section": "BYOS — Bring your own species",
+    "text": "BYOS — Bring your own species\nThe workshop agenda includes worked examples for a series of different species that illustrate real-life scenarios. In addition, the extended nature of the course is intended to provide participants with a chance to apply principles of CKMR design to their own species of interest. For such design, it is not necessary to know everything, but we provide brief BYOS guidelines for key pieces of information you’ll want to be armed with.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
     "objectID": "index.html#workshop-agenda",
     "href": "index.html#workshop-agenda",
     "title": "Hawaiʻi CKMR Workshop 2026",
@@ -134,7 +154,7 @@
     "href": "eric-setup.html#download-and-run-ckmrshiny",
     "title": "Eric’s setup",
     "section": "Download and run CKMRshiny",
-    "text": "Download and run CKMRshiny\nCKMRshiny is a repository that contains a couple of Shiny applications and a few RMarkdown documents, rather than an R package. You do not install it with install_github().\nEric will provide the CKMRshiny repository link with the hands-on materials, once they are more fully complete. Installing the packages above is enough to prepare for now. Once you have that link:\nThis portion subject to change\n\nOpen the CKMRshiny repository supplied by Eric.\nChoose Code → Download ZIP, then extract the ZIP to a folder on your laptop.\nIn RStudio, open the extracted folder as a project (or set your working directory to that folder). The folder should contain app.R and the R subfolder.\nRun the app from the R console:\n\nshiny::runApp()\nAlternatively, give runApp() the path to the extracted folder:\nshiny::runApp(\"path/to/CKMRshiny-main\")\nReplace the example path with the actual folder on your computer. The app should open with tabs for equal reproduction, randomly unequal reproduction, and size-based reproduction. Run a small trial to check that plots appear. Stop the app with RStudio’s Stop button or by pressing Esc in the R console.",
+    "text": "Download and run CKMRshiny\nCKMRshiny is a repository that contains a couple of Shiny applications and a few R Markdown documents, rather than an R package. You do not install it with install_github().\nEric will provide the CKMRshiny repository link with the hands-on materials, once they are ready. Installing the packages above is enough to prepare for now. Once you have that link:\nThis portion is subject to change.\n\nOpen the CKMRshiny repository supplied by Eric.\nChoose Code → Download ZIP, then extract the ZIP to a folder on your laptop.\nIn RStudio, open the extracted folder as a project (or set your working directory to that folder). The folder should contain app.R and the R subfolder.\nRun the app from the R console:\n\nshiny::runApp()\nAlternatively, give runApp() the path to the extracted folder:\nshiny::runApp(\"path/to/CKMRshiny-main\")\nReplace the example path with the actual folder on your computer. The app should open with tabs for equal reproduction, randomly unequal reproduction, and size-based reproduction. Run a small trial to check that plots appear. Stop the app with RStudio’s Stop button or by pressing Esc in the R console.",
     "crumbs": [
       "Eric's setup"
     ]
@@ -150,31 +170,11 @@
     ]
   },
   {
-    "objectID": "index.html#do-some-pre-workshop-reading",
-    "href": "index.html#do-some-pre-workshop-reading",
-    "title": "Hawaiʻi CKMR Workshop 2026",
-    "section": "Do Some Pre-Workshop Reading",
-    "text": "Do Some Pre-Workshop Reading\nThis course is intended to be “cold-start,” meaning we endeavor to build up CKMR concepts from their foundations without any prior knowledge needed. Nonetheless, if you wish to read up things before the workshop, or during your flight to the Islands, we recommend two readings, each of a different flavor.\n\nIf you enjoy mathematical statistics and notation, the fundamentals of CKMR are laid out in those terms in Bravington, Skaug, and Anderson (2016). Close-kin mark-recapture. Statistical Science 31:259-274.\nFor a more accessible introduction to CKMR, we recommend Bravington and Carroll (2023). The practical magic of close-kin mark-recapture. CSIRO Publishing. Downloading that requires that you have accepted Mark’s invitation to his private GitHub repo.\n\nHighly Recommended/Essential: Please read Mark’s 2026 R cribsheet (PDF). Reading this ahead of time can help immensely. Mark has developed an R ecosystem of packages and functions, and he relies on R environments for computational efficiency and syntactic brevity. This may be unfamiliar to some R users. His cribsheet provides an essential introduction.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#byos-bring-your-own-species",
-    "href": "index.html#byos-bring-your-own-species",
-    "title": "Hawaiʻi CKMR Workshop 2026",
-    "section": "BYOS – Bring Your Own Species",
-    "text": "BYOS – Bring Your Own Species\nThe workshop agenda includes worked examples for a series of different species that illustrate real-life scenarios. In addition, the extended nature of the course is intended to provide participants with a chance to apply principles of CKMR design to their own species of interest. For such design, it is not necessary to know everything, but we provide brief BYOS Guidelines for key pieces of information you’ll want to be armed with.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
     "objectID": "byos-guidelines.html",
     "href": "byos-guidelines.html",
-    "title": "BYOS Guidelines",
+    "title": "BYOS guidelines",
     "section": "",
-    "text": "Simple designs\nOur group probably won’t be able to do 30 separate case studies of CKMR design, but we are looking forward to working together on the steps of CKMR design for some different species of interest.\nFor preliminary simple designs (along the lines of Mark’s microscoping package) the data needs are fairly minimal: keeping to the basics is fine, here.\nFor all species you’ll want to have a handle on:",
+    "text": "Simple designs\nOur group probably won’t be able to do 30 separate case studies of CKMR design, but we are looking forward to working together on the steps of CKMR design for some different species of interest.\nFor preliminary simple designs (along the lines of Mark’s microscoping package) the data needs are fairly minimal: keeping to the basics is fine here.\nFor all species you’ll want to have a handle on:",
     "crumbs": [
       "BYOS Guidelines"
     ]
@@ -182,9 +182,9 @@
   {
     "objectID": "byos-guidelines.html#simple-designs",
     "href": "byos-guidelines.html#simple-designs",
-    "title": "BYOS Guidelines",
+    "title": "BYOS guidelines",
     "section": "",
-    "text": "A ballpark estimate of population size\nQualitative features of the species biology\nAny information available on population structure and connectivity\nWhat sort of sampling can be done for the species and the sorts of selectivity such samples might be subjected to.\nFor fish-like species, typical outputs from a recent assessment:\n\nNumbers at age\nWeight at age\nMaturity schedule",
+    "text": "A ballpark estimate of population size\nQualitative features of the species’ biology\nAny information available on population structure and connectivity\nWhat sort of sampling can be done for the species and the sampling selectivity that might affect those samples\nFor fish-like species, typical outputs from a recent assessment:\n\nNumbers at age\nWeight at age\nMaturity schedule",
     "crumbs": [
       "BYOS Guidelines"
     ]
@@ -192,7 +192,7 @@
   {
     "objectID": "byos-guidelines.html#more-complex-designs",
     "href": "byos-guidelines.html#more-complex-designs",
-    "title": "BYOS Guidelines",
+    "title": "BYOS guidelines",
     "section": "More complex designs",
     "text": "More complex designs\nMoving beyond the simple microscoping types of design, be prepared to answer more questions:\n\nWhat is the relationship between fecundity and size?\nAre catch-at-age data/estimates available?\nHow many samples can I age?",
     "crumbs": [
@@ -202,9 +202,9 @@
   {
     "objectID": "byos-guidelines.html#genotype-data",
     "href": "byos-guidelines.html#genotype-data",
-    "title": "BYOS Guidelines",
+    "title": "BYOS guidelines",
     "section": "Genotype data",
-    "text": "Genotype data\nSome of you might have genotype data from species of interest. Whether that is just enough to estimate allele frequencies, or is an entire collection of samples, bring those data along and we can explore them with CKMRsim or kinference.",
+    "text": "Genotype data\nSome of you might have genotype data from species of interest. Whether you have just enough to estimate allele frequencies or an entire collection of samples, bring those data along and we can explore them with CKMRsim or kinference.",
     "crumbs": [
       "BYOS Guidelines"
     ]

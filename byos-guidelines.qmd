@@ -1,4 +1,4 @@
-# BYOS Guidelines {.unnumbered}
+# BYOS guidelines {.unnumbered}
 
 Our group probably won't be able to do 30 separate case studies of CKMR design,
 but we are looking forward to working together on the steps of CKMR design
@@ -7,15 +7,15 @@ for some different species of interest.
 ## Simple designs 
 
 For preliminary simple designs (along the lines of Mark's `microscoping` package)
-the data needs are fairly minimal: keeping to the basics is fine, here.
+the data needs are fairly minimal: keeping to the basics is fine here.
 
 For all species you'll want to have a handle on:
 
 * A ballpark estimate of population size
-* Qualitative features of the species biology
+* Qualitative features of the species' biology
 * Any information available on population structure and connectivity
-* What sort of sampling can be done for the species and the sorts of
-  selectivity such samples might be subjected to.
+* What sort of sampling can be done for the species and the sampling selectivity
+  that might affect those samples
 * For fish-like species, typical outputs from a recent assessment:
     - Numbers at age
     - Weight at age
@@ -34,6 +34,6 @@ more questions:
 
 ## Genotype data
 
-Some of you might have genotype data from species of interest. Whether that is
-just enough to estimate allele frequencies, or is an entire collection of samples,
+Some of you might have genotype data from species of interest. Whether you have
+just enough to estimate allele frequencies or an entire collection of samples,
 bring those data along and we can explore them with `CKMRsim` or `kinference`.  
