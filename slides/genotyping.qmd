@@ -1,0 +1,728 @@
+---
+pagetitle: "Sequencing, genotyping methods, and genotyping error"
+format:
+  revealjs:
+    css: genotyping.css
+---
+
+## Sequencing, genotyping methods,<br>and genotyping error {.opening-slide}
+
+Eric C. Anderson
+
+Hawaiʻi CKMR Workshop 2026
+
+
+
+## Overview
+
+- How sequencing becomes genotype data
+- Which parts of the genome to target
+- Heterozygote miscalls in RAD data: diagnostics and estimation
+- Capture and amplicon sequencing
+- Microhaplotypes
+- Error in genotyping
+
+
+::: {.notes}
+2022 section overview; 2019 slides 2 and 39.
+:::
+
+## Next-generation sequencing
+
+- Other genotyping technologies include traditional microsatellite assays, SNP arrays, and targeted SNP assays.
+- High-throughput sequencing has made large-scale genetic sampling possible.
+- Someone on the team needs to understand the technology that generates the genotypes.
+- We will concentrate on **Illumina short-read sequencing**.
+
+
+::: {.notes}
+2022 Next Generation Sequencing; 2019 slide 3.
+:::
+
+## Library preparation {.library-slide}
+
+Start with a DNA fragment from a known individual:
+
+::: {.sequence-example}
+TAGACGCTGATTTTGGGTCAGTTTCGTATTTTCCCCACTAA
+:::
+
+Add sample indexes/barcodes so that pooled data can be assigned back to individuals:
+
+::: {.sequence-example}
+[INDEX]{.sequence-index}–TAGACGCTGATTTTGGGTCAGTTTCGTATTTTCCCCACTAA–[INDEX]{.sequence-index}
+:::
+
+Add adapters compatible with the sequencing instrument, then pool prepared libraries:
+
+::: {.sequence-example}
+[ADAPTER]{.sequence-adapter}–[INDEX]{.sequence-index}–[DNA INSERT]{.sequence-insert}–[INDEX]{.sequence-index}–[ADAPTER]{.sequence-adapter}
+:::
+
+::: {.notes}
+2022: Basic Illumina Sequencing — Library Prep; 2019 slide 4. Rebuilt as editable text rather than importing the old branded layout. Diagram is schematic: actual index/adapter structure depends on the library protocol.
+:::
+
+## Inside the sequencer {.genotyping-columns}
+
+::: {.columns}
+::: {.column width="35%"}
+- Fragments bind to the flow cell.
+- Clusters of copies form.
+- Bases are read by sequencing by synthesis.
+- **Paired-end sequencing** reads both ends of a fragment.
+:::
+::: {.column width="65%"}
+![](assets/genotyping/illumina-vid.png){.method-figure fig-alt="Illumina sequencing animation showing clusters on a flow cell."}
+
+[Illumina sequencing video](https://www.youtube.com/watch?v=fCd6B5HRaZ8)
+:::
+:::
+
+
+::: {.notes}
+2022 Inside the Illumina Sequencer; 2019 slide 5. Original Illumina video screenshot and link retained.
+:::
+
+## The raw data: FASTQ {.genotyping-figure}
+
+![](assets/genotyping/fastq.png){.genotyping-wide fig-alt="Paired-end sample-specific FASTQ files: four lines per read, with matching reads from the two ends of each fragment."}
+
+FASTQ records contain a sequence and base-quality information for each read. Paired-end runs produce corresponding read-1 and read-2 records.
+
+We need a way to identify which genomic region each read came from.
+
+
+::: {.notes}
+2022 The Raw Data; 2019 slide 6.
+:::
+
+## What counts as a reference?
+
+A reference can be:
+
+- A chromosome-level genome assembly
+- A collection of assembled RAD loci or “stacks”
+- A set of known amplicon sequences
+
+It is a collection of sequences against which reads can be compared.
+
+A complete genome is useful, but **not every genotyping workflow requires one**.
+
+::: {.notes}
+Restored from 2019 slide 7. Distinguishes read mapping against a reference sequence collection from requiring a chromosome-level reference genome.
+:::
+
+## Alignment or mapping
+
+Find where each read belongs in the reference sequence collection.
+
+After initial quality control, mapping gives us:
+
+- An aligned position for the read
+- Mismatches, gaps, and unaligned portions
+- A measure of confidence in the placement
+
+The confidence in the mapping is distinct from the confidence in a genotype call.
+
+
+::: {.notes}
+2022 Alignment or Mapping; 2019 slide 8.
+:::
+
+## Aligned reads, zoomed in {.genotyping-figure}
+
+![](assets/genotyping/align-zoom-in.png){.genotyping-hero fig-alt="Genome browser view of aligned reads and individual base mismatches."}
+
+
+::: {.notes}
+2022 aligned reads zoomed in; 2019 slide 9.
+:::
+
+## Aligned reads, zoomed out {.genotyping-figure}
+
+![](assets/genotyping/align-zoom-out.png){.genotyping-hero fig-alt="Genome browser view showing read alignments at a broader genomic scale."}
+
+
+::: {.notes}
+2022 aligned reads zoomed out; 2019 slide 10. Stray x removed.
+:::
+
+## Variant detection and genotype calling
+
+**Variant detection:** identify genomic positions that vary among sampled individuals, such as SNPs and indels.
+
+**Genotype calling:** infer an individual's alleles at a particular variant.
+
+- A sequenced fragment comes from one chromosome copy.
+- Fragments from both homologous copies align to the same locus.
+- More usable coverage generally gives more information about both copies.
+- Systematic errors still require attention, even at high depth.
+
+
+::: {.notes}
+2022 Variant Detection and Genotype Calling; 2019 slide 11.
+:::
+
+## The fundamental sequencing tradeoff
+
+A sequencing budget buys a finite number of reads or read-pairs.
+
+$$
+\text{mean read-pairs per individual per locus}
+\approx\frac{R}{N\,L},
+$$
+
+where $R$ is usable read-pairs, $N$ is individuals, and $L$ is targeted loci.
+
+- More individuals or more loci reduces coverage at a fixed $R$.
+- Targeting less of the genome can concentrate coverage where it matters.
+- Actual coverage is uneven across individuals and loci.
+
+::: {.notes}
+2022: The Fundamental Tradeoff in NGS; 2019 slide 12. R counts usable read-pairs assigned to targets, not raw instrument output. This is an allocation approximation, not a guarantee of independent molecules or locus coverage. Overlapping read mates should not be counted as two independent DNA fragments.
+:::
+
+## A current sequencing-budget example {.price-slide}
+
+**NovaSeq X, 10B flow-cell lane, 2 × 150 bp**
+
+- Published service output: approximately **1.25 billion read-pairs per lane**
+- Published external rate: **US$1,765 per lane**, sequencing service
+- UC rate: **US$1,535 per lane**
+
+Library preparation and other services are additional to lane sequencing.
+
+The allocation tradeoff persists even as instruments and prices change.
+
+::: {.source-line}
+[QB3 Berkeley rates](https://qb3.berkeley.edu/facility/genomics/rates/), effective June 1, 2026; checked November 5, 2026. A service example, not a universal price or the instrument's maximum yield.
+:::
+
+::: {.notes}
+Replaces the 2022 example of 2.5 billion reads and roughly US$5,000 per NovaSeq 6000 S4 lane, and the older 400-million-read/US$3,000 example. The cited rate explicitly labels output as RP for the 150PE row. Do not mix single reads and read-pairs. Source: https://qb3.berkeley.edu/facility/genomics/rates/ .
+:::
+
+## Which parts of the genome?
+
+- **Whole-genome sequencing:** no targeted subset
+- **RAD/ddRAD:** sequences around restriction-enzyme cut sites
+- **Capture:** sequences selected by probe hybridization
+- **RAD plus capture:** selected restriction fragments
+- **Amplicon sequencing:** regions amplified by multiplexed PCR
+
+The choice determines how the read budget is distributed.
+
+
+::: {.notes}
+2022 targeting overview; 2019 slide 13.
+:::
+
+## Whole-genome data {.genotyping-figure}
+
+![](assets/genotyping/wgs-wonder.png){.genotyping-wide fig-alt="Dense whole-genome variation across three megabases of steelhead chromosome 28 in 124 individuals."}
+
+Three megabases of chromosome 28 in 124 steelhead: a tremendous amount of information.
+
+For CKMR, evaluate genome size, usable coverage, sample count, error handling, and total project cost. More variants alone do not settle the design question.
+
+::: {.notes}
+2022 WGS example; 2019 slides 14–16. Retains the original scientific example but removes the categorical historical claim that WGS is too expensive or has too many variants for CKMR. Illustrative current service pricing is in the update report; it is not a universal WGS quotation.
+:::
+
+## RAD-seq and ddRAD-seq {.genotyping-figure}
+
+::: {.rad-diagram-crop}
+![](assets/genotyping/rad.png){fig-alt="RAD and double-digest RAD protocols selecting DNA around enzyme cut sites; original illustration credits Peterson et al. 2012."}
+:::
+
+Restriction enzymes and size selection determine the subset of fragments sequenced.
+
+A nominal depth cutoff alone does **not** establish genotype accuracy.
+
+::: {.notes}
+2022 RAD-Seq and ddRAD-Seq; 2019 slide 17. Original scientific illustration retained, including its Peterson et al. 2012 credit. Layout cropping hides the outdated prose below the diagram, including the 10× quotation; the source asset is unmodified.
+:::
+
+## RAD concentrates coverage at selected loci {.genotyping-columns}
+
+::: {.columns}
+::: {.column width="50%"}
+**Sparse genome-wide coverage**
+
+![](assets/genotyping/rad-genome-coverage.png){.method-figure fig-alt="RAD variant coverage occupies a small subset of the genome."}
+:::
+::: {.column width="50%"}
+**More reads at the selected loci**
+
+![](assets/genotyping/rad-locus-depth.png){.method-figure fig-alt="Genome browser view of high read depths around targeted RAD loci."}
+:::
+:::
+
+::: {.notes}
+Restored from 2019 slides 18–19. These are original empirical illustrations, not current instrument benchmarks.
+:::
+
+## What RAD gets you
+
+- Thousands to many thousands of loci, depending on protocol and genome
+- A route to marker discovery in a species without an established panel
+- Missing genotypes when loci or individuals receive insufficient usable reads
+- Potentially unreliable calls even among genotypes recorded as non-missing
+
+**Current service example:** IGATech lists standard ddRAD at **€34–59 per sample**, depending on batch size, at an average four million reads per sample. Standard bioinformatics is listed separately at **€4–7 per sample**.
+
+::: {.source-line}
+[IGATech ddRAD service](https://igatechnology.com/sequencing-services/ddrad-genotyping/), checked November 5, 2026. These are that provider's published terms; “reads” follows its terminology.
+:::
+
+
+::: {.notes}
+2022 What RAD gets you; 2019 slide 20. Current price example from the linked IGATech service page, checked November 5, 2026.
+:::
+
+## Two routes to allele dropout
+
+**Systematic loss / null alleles**
+
+An allele may fail to enter the observed library, for example when a restriction site or primer-binding site differs.
+
+**Heterozygote miscall**
+
+A true heterozygote is called a homozygote because the evidence for one allele is lost or insufficient.
+
+The observed outcome can look similar, but the mechanisms and remedies differ.
+
+::: {.notes}
+2019 slide 21. The original literature examples are Arnold et al. (2013), Gautier et al. (2013), Huang and Knowles (2016), and Lowry et al. (2017). The source image remains available in assets as rad-criticisms.png. More sequencing cannot necessarily recover an allele that failed to enter the library.
+:::
+
+## A simple genotype-frequency diagnostic {.genotyping-figure}
+
+![](assets/genotyping/willow-genotype-frequencies.png){.genotyping-wide fig-alt="Willow flycatcher called-genotype frequencies plotted against Hardy–Weinberg expected frequencies, with separate panels for the three genotypes."}
+
+Compare observed genotype frequencies with the expectations based on allele frequency and Hardy–Weinberg equilibrium (HWE).
+
+This is a **diagnostic**, not by itself proof of genotyping error.
+
+
+::: {.notes}
+2019 slide 22, original willow flycatcher example and diagnostic plots.
+:::
+
+## A less reassuring example {.genotyping-figure}
+
+![](assets/genotyping/lobster-genotype-frequencies.png){.genotyping-wide fig-alt="Lobster RAD genotype-frequency plots show a substantial heterozygote deficit relative to HWE expectations."}
+
+Lobster data discussed in the 2019 talk, from Benestan et al. (2015).
+
+How much heterozygote miscall would be needed to produce a pattern like this under the model?
+
+
+::: {.notes}
+2019 slide 23, original lobster example attributed in that talk to Benestan et al. 2015.
+:::
+
+## A model for heterozygote miscalls {.model-slide}
+
+For individual $i$ at SNP $\ell$:
+
+| Symbol | Meaning |
+|:--|:--|
+| $p_\ell$ | Unknown alternate-allele frequency |
+| $X_{i\ell}$ | True, unobserved genotype: 0, 1, or 2 alternate copies |
+| $Y_{i\ell}$ | Observed, possibly incorrect genotype call |
+| $m$ | Probability a true heterozygote is called a homozygote |
+
+$$p_\ell\sim\operatorname{Beta}(\tfrac12,\tfrac12),
+\qquad X_{i\ell}\mid p_\ell\sim\operatorname{Binomial}(2,p_\ell).$$
+
+The second expression assumes HWE within the population being modelled.
+
+::: {.notes}
+2019 slide 24 defines these variables and gives alpha=(1/2,1/2). Rebuilt as editable text and LaTeX instead of using its raster model diagram, which contains an embedded NOAA logo. The source does not specify a prior for m or a complete genotype transition matrix.
+:::
+
+## Making the observation model explicit {.model-slide}
+
+One simple **symmetric** miscall model is:
+
+$$
+\begin{array}{c|ccc}
+&Y=0&Y=1&Y=2\\\hline
+X=0&1&0&0\\
+X=1&m/2&1-m&m/2\\
+X=2&0&0&1
+\end{array}
+$$
+
+Rows are true genotypes; columns are observed calls.
+
+- Only true heterozygotes are miscalled in this simplified model.
+- Each homozygote outcome is equally likely conditional on a miscall.
+- Inference also requires a prior or other treatment for $m$.
+
+::: {.notes}
+Teaching extension: the symmetric transition probabilities are an explicit illustrative assumption, not a recovered specification of the original MCMC implementation. Other error processes need a different observation model. No original data have been refitted for this conversion.
+:::
+
+## Estimating $m$ with MCMC {.genotyping-columns}
+
+::: {.columns}
+::: {.column width="50%"}
+**Willow flycatchers**
+
+![](assets/genotyping/willow-mcmc.png){.method-figure fig-alt="Original willow flycatcher MCMC trace for the heterozygote-miscall parameter, declining during its initial transient."}
+:::
+::: {.column width="50%"}
+**Lobsters**
+
+![](assets/genotyping/lobster-mcmc.png){.method-figure fig-alt="Original lobster MCMC trace for the heterozygote-miscall parameter, approaching roughly one-quarter."}
+:::
+:::
+
+Infer $m$ while allowing uncertainty in allele frequencies and latent true genotypes. Assess burn-in, mixing, and convergence before interpreting summaries.
+
+::: {.notes}
+Original traces from 2019 slides 25–26, not newly fitted estimates. The inference relies on the model, including its population assumptions. Population structure or inbreeding can also create heterozygote deficits and must be considered.
+:::
+
+## Published-data survey: bonnethead shark {.genotyping-figure}
+
+![](assets/genotyping/bonnethead-miscall.png){.genotyping-wide fig-alt="Original bonnethead-shark genotype-frequency diagnostic, labelled with estimated miscall rate 0.01."}
+
+The original analysis estimated $\widehat m=0.01$.
+
+
+::: {.notes}
+2019 slide 27. Historical dataset-specific estimate, not recomputed.
+:::
+
+## Published-data survey: red drum {.genotyping-figure}
+
+![](assets/genotyping/red-drum-miscall.png){.genotyping-wide fig-alt="Original red-drum genotype-frequency diagnostic, labelled with estimated miscall rate 0.05."}
+
+The original analysis estimated $\widehat m=0.05$.
+
+
+::: {.notes}
+2019 slide 28. Historical dataset-specific estimate, not recomputed.
+:::
+
+## Published-data survey: Chinook salmon {.genotyping-figure}
+
+![](assets/genotyping/chinook-miscall.png){.genotyping-wide fig-alt="Original Columbia River Chinook salmon diagnostic, labelled with estimated miscall rate 0.17."}
+
+The original analysis estimated $\widehat m=0.17$.
+
+
+::: {.notes}
+2019 slide 29. Historical dataset-specific estimate, not recomputed.
+:::
+
+## Published-data survey: snails {.genotyping-figure}
+
+![](assets/genotyping/snail-miscall.png){.genotyping-wide fig-alt="Original snail genotype-frequency diagnostic, labelled with estimated miscall rate 0.45."}
+
+The original analysis estimated $\widehat m=0.45$.
+
+::: {.notes}
+The four survey examples are preserved from 2019 slides 27–30. Estimates are historical, model-dependent results from those particular datasets, not species-wide error rates or new estimates. The source slides do not give full bibliographic metadata for every dataset.
+:::
+
+## Miscall and read depth {.genotyping-figure}
+
+![](assets/genotyping/depth-miscall.png){.genotyping-wide fig-alt="Original red-drum plot shows higher heterozygote-miscall estimates at low mean read depth and lower estimates at high depth."}
+
+In this red-drum example, low-depth groups have higher estimated miscall rates.
+
+Check accuracy and coverage distributions; **mean depth alone can conceal poorly covered loci or samples**.
+
+
+::: {.notes}
+2019 slide 31. Original red-drum empirical plot.
+:::
+
+## Why the downstream analysis matters
+
+- **Allele frequencies:** symmetric heterozygote-to-homozygote errors can partly cancel in the average allele count.
+- **Heterozygosity and outlier analyses:** dropout changes genotype frequencies and can distort the patterns being tested.
+- **Relationship inference:** an error can turn a genuine relative into an apparent mismatch.
+
+An error rate that seems modest for one task can be unacceptable for another.
+
+::: {.notes}
+Adapted from 2019 slide 32. The allele-frequency statement is qualified by symmetry; it is not valid for arbitrary allele-specific dropout. Algebraically, under the displayed symmetric observation model E(Y)/2=p even though heterozygosity is reduced.
+:::
+
+## RAD for CKMR: take-home messages
+
+- Use pilot data to evaluate error, missingness, and locus consistency.
+- Avoid treating “more than 10×” as a universal accuracy threshold.
+- Examine heterozygote miscalls, not just the percentage of missing calls.
+- RAD can support marker discovery or independent confirmation of candidate kin pairs.
+- Decide whether it meets the precision requirements of the particular CKMR study.
+
+::: {.notes}
+2019 slide 33 and 2022 What RAD gets you. Replaces a blanket historical judgement about RAD readiness with study-specific validation criteria.
+:::
+
+## Capture arrays {.genotyping-figure}
+
+![](assets/genotyping/capture.png){.genotyping-wide fig-alt="Capture probes enrich selected genomic fragments; original image credit Arbor Biosciences."}
+
+Probes or “baits” hybridize to selected sequences, enriching the library for those targets.
+
+Cost and performance depend on probe design, sample scale, and the sequencing allocation.
+
+
+::: {.notes}
+2022 Capture arrays; 2019 slide 34. Figure credit: Arbor Biosciences.
+:::
+
+## RAD plus capture
+
+- Prepare a RAD library with sample indexes.
+- Enrich a selected subset of RAD fragments using capture probes.
+- Concentrate sequencing on chosen loci rather than every fragment in the original RAD library.
+- Examples include **RAPTURE** and **DArTcap**.
+- Ask for a quote covering panel design, library preparation, sequencing, and analysis.
+
+::: {.source-line}
+[DArT pricing and quotation policy](https://www.diversityarrays.com/services/pricing/), checked November 5, 2026.
+:::
+
+::: {.notes}
+2022 Combination RAD + Capture; 2019 slide 35. Removed the old US$1–5/sample claim: it was an historical genotyping-cost example, not a verified current all-in service price. DArT publishes catalogue prices in its ordering system and offers project-specific quotations.
+:::
+
+## Amplicon sequencing
+
+Multiplexed PCR primers amplify selected regions of the genome.
+
+- Target a small set of informative regions or a larger panel.
+- Allocate enough usable reads to call the two gene copies reliably.
+- Retain multiple linked SNPs as **microhaplotypes** when reads establish their phase.
+- Panel performance matters as much as nominal marker count.
+
+::: {.source-line}
+[GT-seq: Campbell et al. (2015)](https://doi.org/10.1111/1755-0998.12357)
+:::
+
+
+::: {.notes}
+2022 Amplicon Sequencing; 2019 slide 36. GT-seq reference: Campbell et al., doi:10.1111/1755-0998.12357.
+:::
+
+## Developing an amplicon panel
+
+Panel development is iterative:
+
+- Remove loci with apparent null alleles.
+- Remove loci affected by paralogs.
+- Rebalance or remove “high-rollers” that consume a disproportionate share of reads.
+- Recheck coverage and genotype quality after each revision.
+
+The 2019 examples included parent–offspring and full-sibling panels using roughly **80–130 amplicons with microhaplotypes**. That is an example, not a universal panel-size prescription.
+
+
+::: {.notes}
+Restored from 2019 slides 37–38. Panel sizes are historical examples.
+:::
+
+## Amplicon genotyping: scale affects cost {.price-slide}
+
+A published **GT-seq 150 bp** service example from Oregon State includes DNA extraction and genotyping:
+
+| Batch | Published batch fee | Calculated cost per sample |
+|--:|--:|--:|
+| 94 samples | US$6,936 | US$73.79 |
+| 752 samples | US$12,878 | US$17.13 |
+| 1,880 samples | US$22,894 | US$12.18 |
+
+::: {.source-line}
+[OSU fee 16141](https://fees.oregonstate.edu/Public/ViewIEFeeDetail.aspx?ID=16141&ietype=i), updated April 16, 2025; current public listing checked November 5, 2026. These are batch-fee quotients, not a quote for a new panel.
+:::
+
+::: {.notes}
+Replaces the historical roughly US$7/fish example. Per-sample values are calculations from the published fee and batch size, rounded to cents. Do not compare directly with lane-only sequencing or in-house reagent costs. Confirm panel-development, analysis, and other project-specific charges with the provider.
+:::
+
+## What variation do we retain?
+
+Once coverage and genotype quality are adequate, a sequenced region can yield:
+
+- A single SNP
+- A **microhaplotype** combining linked variants
+- A microsatellite allele inferred from its sequence
+
+Different representations retain different amounts of information from the same reads.
+
+
+::: {.notes}
+Restored from 2019 slides 39–40.
+:::
+
+## Phase is often discarded {.phase-slide}
+
+Suppose the reads at one locus show:
+
+| Read-supported sequence | SNP 1 | SNP 2 | SNP 3 | Supporting reads |
+|:--|:--:|:--:|:--:|--:|
+| Chromosome copy A | A | G | T | 22 |
+| Chromosome copy B | G | C | C | 31 |
+
+Reporting separate SNP genotypes gives **A/G**, **C/G**, and **C/T**.
+
+Keeping only SNP 2 gives **C/G**.
+
+Both choices discard some of the observed association of bases along each chromosome copy.
+
+::: {.notes}
+Rebuilt as editable text/table from the example in 2019 slide 41, using exactly its two sequences and read counts.
+:::
+
+## Microhaplotypes retain the phase {.phase-slide}
+
+The same reads identify two alleles at locus $X$:
+
+$$G_X=\{\mathrm{AGT},\ \mathrm{GCC}\}.$$
+
+- Each distinct linked sequence is recorded as an allele.
+- The locus can have more than two alleles in the population.
+- Phase comes from observations on the same sequenced fragment, where the variants are spanned by that fragment.
+- Do not treat linked SNPs from this same locus as independent loci.
+
+::: {.notes}
+2019 slide 42. Preserves the AGT/GCC example. Phase across disconnected reads is not supplied merely by calling each SNP.
+:::
+
+## Inspecting microhaplotype calls {.genotyping-figure}
+
+![](assets/genotyping/microhaplot.png){.genotyping-wide fig-alt="Original microhaplot application screenshot displaying read depth, allelic read ratios, and genotype-call controls."}
+
+Inspect read support, allelic balance, and locus behavior before accepting calls.
+
+[`microhaplot` software](https://github.com/ngthomas/microhaplot)
+
+
+::: {.notes}
+2019 slide 43. Screenshot from the microhaplot software by Thomas Ng and collaborators: https://github.com/ngthomas/microhaplot .
+:::
+
+## Increased heterozygosity {.genotyping-columns}
+
+::: {.columns}
+::: {.column width="57%"}
+![](assets/genotyping/microhap-heterozygosity.png){.genotyping-tall fig-alt="Baetscher et al. figure compares heterozygosity at 165 microhaplotypes with the most informative single SNP at each locus; microhaplotypes are generally higher."}
+:::
+::: {.column width="43%"}
+At 165 loci, compare each microhaplotype with the single SNP having the highest minor-allele frequency in that region.
+
+A biallelic SNP has maximum expected heterozygosity **0.5**.
+
+A multi-allelic microhaplotype can exceed that limit.
+:::
+:::
+
+::: {.source-line}
+[Baetscher et al. (2018), Figure 2](https://doi.org/10.1111/1755-0998.12737)
+:::
+
+
+::: {.notes}
+2019 slide 44. Baetscher et al. 2018 Figure 2, doi:10.1111/1755-0998.12737. Original plot retained.
+:::
+
+## Increased power for relationship inference {.genotyping-columns}
+
+::: {.columns}
+::: {.column width="57%"}
+![](assets/genotyping/microhap-kin-power.png){.genotyping-tall fig-alt="Baetscher et al. Figure 3 compares false-positive rates against false-negative rates for parent-offspring and full-sibling identification using microhaplotypes and SNPs."}
+:::
+::: {.column width="43%"}
+The simulations compare parent–offspring and full-sibling matching using:
+
+- 165 microhaplotypes
+- 165 SNPs
+- 96 microhaplotypes
+- 96 high-heterozygosity SNPs
+
+Evaluate both **false positives and false negatives** when choosing a panel.
+:::
+:::
+
+::: {.source-line}
+[Baetscher et al. (2018), Figure 3](https://doi.org/10.1111/1755-0998.12737)
+:::
+
+
+::: {.notes}
+2019 slide 45. Baetscher et al. 2018 Figure 3, doi:10.1111/1755-0998.12737. Original plot retained.
+:::
+
+## Microhaplotypes in a CKMR panel
+
+- Multiple alleles can make each independently inherited locus more informative.
+- Retaining phase can improve power without adding a new amplicon.
+- Loci still need reliable genotype calls and suitable population allele-frequency estimates.
+- Independence among loci and linkage effects remain relevant.
+- Validate performance for the relationship classes the study actually uses.
+
+::: {.notes}
+Synthesis of the 2019 microhaplotype section, including Baetscher et al. 2018; intended to connect to the genetics fundamentals presentation. No new empirical performance estimates are asserted.
+:::
+
+## Microsatellites from sequencing {.genotyping-figure}
+
+![](assets/genotyping/microsatellite-study.png){.genotyping-wide fig-alt="Bradbury et al. study on genotyping-by-sequencing of genome-wide microsatellite loci in Atlantic salmon."}
+
+Amplicon sequencing can also recover microsatellite variation. Assess reproducibility, allele calling, and error before relying on it for kin identification.
+
+::: {.source-line}
+[Bradbury et al. (2018)](https://doi.org/10.1111/eva.12606); [MEGASAT: Zhan et al. (2017)](https://doi.org/10.1111/1755-0998.12561)
+:::
+
+
+::: {.notes}
+2022 Microsatellites from Next Generation Sequencing; 2019 slides 46–47. Original Bradbury et al. 2018 article image retained; doi:10.1111/eva.12606. MEGASAT reference doi:10.1111/1755-0998.12561.
+:::
+
+## Genotyping error models
+
+- **Biallelic SNPs:** a dropout-only model can be a useful starting approximation; check whether it matches the data.
+- **Microhaplotypes and microsatellites:** errors can change one heterozygote into another, so a single dropout parameter may be insufficient.
+- Systematic allele-specific loss differs from stochastic loss at low coverage.
+- Assess how error changes the distributions of kinship evidence and the resulting false-positive and false-negative rates.
+
+::: {.notes}
+2019 slide 48. Inference and power calculations must match the observation process and marker representation. CKMRsim can support exploration of the effects of genotyping error on kin-identification power.
+:::
+
+## Conclusions
+
+- Sequencing depth must be allocated across individuals and genomic regions.
+- Missing calls and incorrect non-missing calls are different problems.
+- RAD heterozygote-miscall diagnostics provide a useful warning, but depend on population and error-model assumptions.
+- Targeting loci can concentrate coverage; retaining microhaplotypes can retain more information per locus.
+- Choose and validate a genotyping panel against the needs of the CKMR design.
+
+
+::: {.notes}
+Synthesis of 2022 Wrap Up and 2019 slide 49, revised for the merged 2026 presentation.
+:::
+
+## Sources and cost examples {.reference-slide}
+
+- [2026 sequencing rates: QB3 Berkeley](https://qb3.berkeley.edu/facility/genomics/rates/)
+- [Published ddRAD service: IGATech](https://igatechnology.com/sequencing-services/ddrad-genotyping/)
+- [Published GT-seq batch fees: Oregon State](https://fees.oregonstate.edu/Public/ViewIEFeeDetail.aspx?ID=16141&ietype=i)
+- [Capture-service pricing policy: DArT](https://www.diversityarrays.com/services/pricing/)
+- [Microhaplotype evidence: Baetscher et al. (2018)](https://doi.org/10.1111/1755-0998.12737)
+
+Prices checked November 5, 2026. They are provider-specific examples in the stated currencies; service scope differs among examples.
+
+
+::: {.notes}
+Links to the public provider listings checked on November 5, 2026 and to the primary microhaplotype study. Detailed cost updates are in genotyping-updates.md.
+:::

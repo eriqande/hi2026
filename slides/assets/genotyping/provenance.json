@@ -1,0 +1,122 @@
+[
+  {
+    "asset": "illumina-vid.png",
+    "source": "2022 eric-talk-1.qmd eric-images/illumina-vid.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "fastq.png",
+    "source": "2022 eric-talk-1.qmd eric-images/fastq.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "align-zoom-in.png",
+    "source": "2022 eric-talk-1.qmd eric-images/align-zoom-in.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "align-zoom-out.png",
+    "source": "2022 eric-talk-1.qmd eric-images/align-zoom-out.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "wgs-wonder.png",
+    "source": "2022 eric-talk-1.qmd eric-images/wgs-wonder.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "rad.png",
+    "source": "2022 eric-talk-1.qmd eric-images/rad.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "capture.png",
+    "source": "2022 eric-talk-1.qmd eric-images/capture.png",
+    "operation": "unchanged copy"
+  },
+  {
+    "asset": "rad-genome-coverage.png",
+    "source": "2019 slide 18, picture 1, ppt/media/image13.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "rad-locus-depth.png",
+    "source": "2019 slide 19, picture 1, ppt/media/image14.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "rad-criticisms.png",
+    "source": "2019 slide 21, picture 1, ppt/media/image15.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "willow-genotype-frequencies.png",
+    "source": "2019 slide 22, picture 1, ppt/media/image16.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "lobster-genotype-frequencies.png",
+    "source": "2019 slide 23, picture 1, ppt/media/image17.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "willow-mcmc.png",
+    "source": "2019 slide 25, picture 1, ppt/media/image19.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "lobster-mcmc.png",
+    "source": "2019 slide 26, picture 1, ppt/media/image20.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "bonnethead-miscall.png",
+    "source": "2019 slide 27, picture 1, ppt/media/image21.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "red-drum-miscall.png",
+    "source": "2019 slide 28, picture 1, ppt/media/image22.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "chinook-miscall.png",
+    "source": "2019 slide 29, picture 1, ppt/media/image23.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "snail-miscall.png",
+    "source": "2019 slide 30, picture 1, ppt/media/image24.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "depth-miscall.png",
+    "source": "2019 slide 31, picture 1, ppt/media/image25.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "microhaplot.png",
+    "source": "2019 slide 43, picture 1, ppt/media/image30.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "microhap-heterozygosity.png",
+    "source": "2019 slide 44, picture 1, ppt/media/image32.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "microhap-kin-power.png",
+    "source": "2019 slide 45, picture 2, ppt/media/image35.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "megasat-paper.png",
+    "source": "2019 slide 46, picture 1, ppt/media/image37.png",
+    "operation": "unchanged extraction"
+  },
+  {
+    "asset": "microsatellite-study.png",
+    "source": "2019 slide 47, picture 1, ppt/media/image38.png",
+    "operation": "unchanged extraction"
+  }
+]

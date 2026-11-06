@@ -1,0 +1,26 @@
+/* Deck-specific layouts; the shared workshop theme is unchanged. */
+.reveal .genotyping-columns { font-size: 0.94em; }
+.reveal .genotyping-figure { font-size: 0.94em; }
+.reveal .genotyping-figure p { margin: 0.4em 0; }
+.reveal .genotyping-wide { width: 100%; height: 370px; }
+.reveal .genotyping-hero { width: 100%; height: 535px; }
+.reveal .method-figure { width: 100%; height: 360px; }
+.reveal .genotyping-tall { width: 100%; height: 440px; }
+.reveal .source-line { font-size: 0.62em; color: #626262; margin-top: 0.9em; }
+.reveal .source-line p { margin: 0; }
+.reveal .price-slide { font-size: 0.94em; }
+.reveal .model-slide { font-size: 0.9em; }
+.reveal .model-slide table { font-size: 0.86em; }
+.reveal .phase-slide table { font-size: 0.85em; }
+.reveal .phase-slide { font-size: 0.96em; }
+.reveal .price-slide table { font-size: 0.9em; }
+.reveal .reference-slide { font-size: 0.94em; }
+.reveal .reference-slide li { margin-bottom: 0.7em; }
+.reveal .library-slide { font-size: 0.92em; }
+.reveal .sequence-example { font-family: monospace; font-size: 0.76em; white-space: nowrap; margin: 0.6em 0 1em; }
+.reveal .sequence-index { color: #7b3ca3; }
+.reveal .sequence-adapter { color: #ba702d; }
+.reveal .sequence-insert { color: #23686b; }
+.reveal .rad-diagram-crop { height: 370px; overflow: hidden; text-align: center; }
+.reveal .rad-diagram-crop p { margin: 0; }
+.reveal .rad-diagram-crop img { height: 560px; width: auto; max-height: none; max-width: 100%; }

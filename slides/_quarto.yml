@@ -1,0 +1,32 @@
+project:
+  type: default
+  output-dir: _output
+  resources:
+    - assets/vendor/katex/
+  render:
+    - genetics-fundamentals.qmd
+    - genotyping.qmd
+
+format:
+  revealjs:
+    theme: [simple, workshop.scss]
+    width: 1280
+    height: 720
+    margin: 0.05
+    center: false
+    slide-number: c/t
+    transition: none
+    background-transition: none
+    incremental: false
+    navigation-mode: linear
+    controls: true
+    progress: true
+    preview-links: false
+    slide-level: 2
+    html-math-method:
+      method: katex
+      url: assets/vendor/katex/
+    lang: en
+
+execute:
+  eval: false
