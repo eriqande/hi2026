@@ -176,7 +176,7 @@
     "section": "",
     "text": "Simple designs\nOur group probably won’t be able to do 30 separate case studies of CKMR design, but we are looking forward to working together on the steps of CKMR design for some different species of interest.\nFor preliminary simple designs (along the lines of Mark’s microscoping package) the data needs are fairly minimal: keeping to the basics is fine here.\nFor all species you’ll want to have a handle on:",
     "crumbs": [
-      "BYOS Guidelines"
+      "BYOS guidelines"
     ]
   },
   {
@@ -186,7 +186,7 @@
     "section": "",
     "text": "A ballpark estimate of population size\nQualitative features of the species’ biology\nAny information available on population structure and connectivity\nWhat sort of sampling can be done for the species and the sampling selectivity that might affect those samples\nFor fish-like species, typical outputs from a recent assessment:\n\nNumbers at age\nWeight at age\nMaturity schedule",
     "crumbs": [
-      "BYOS Guidelines"
+      "BYOS guidelines"
     ]
   },
   {
@@ -196,7 +196,7 @@
     "section": "More complex designs",
     "text": "More complex designs\nMoving beyond the simple microscoping types of design, be prepared to answer more questions:\n\nWhat is the relationship between fecundity and size?\nAre catch-at-age data/estimates available?\nHow many samples can I age?",
     "crumbs": [
-      "BYOS Guidelines"
+      "BYOS guidelines"
     ]
   },
   {
@@ -206,7 +206,7 @@
     "section": "Genotype data",
     "text": "Genotype data\nSome of you might have genotype data from species of interest. Whether you have just enough to estimate allele frequencies or an entire collection of samples, bring those data along and we can explore them with CKMRsim or kinference.",
     "crumbs": [
-      "BYOS Guidelines"
+      "BYOS guidelines"
     ]
   }
 ]

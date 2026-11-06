@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 .quarto/
+slides/_output/
 .DS_Store
 # Local references only; the website is self-contained.
 .cg

@@ -24,3 +24,6 @@
 .reveal .rad-diagram-crop { height: 370px; overflow: hidden; text-align: center; }
 .reveal .rad-diagram-crop p { margin: 0; }
 .reveal .rad-diagram-crop img { height: 560px; width: auto; max-height: none; max-width: 100%; }
+.reveal .dag-slide { font-size: 0.9em; }
+.reveal .dag-slide .column:first-child { text-align: center; }
+.reveal .dag-slide .dag-figure { width: auto; max-width: 100%; object-fit: contain; }
