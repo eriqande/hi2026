@@ -58,15 +58,23 @@ library(tibble)
 CKMRshiny is a repository that contains a couple of Shiny applications and a
 few R Markdown documents, rather than an R package. You do not install it with `install_github()`.
 
-**Eric will provide the CKMRshiny repository link with the hands-on materials,
-once they are ready**. Installing the packages above is enough to prepare for now. Once you have that link:
+The best way to get it is to clone it from GitHub.  Either:
 
-_This portion is subject to change._
+* Get it with `git clone` on the command line:
+```sh
+git clone https://github.com/eriqande/CKMRshiny.git
+```
 
-1. Open the CKMRshiny repository supplied by Eric.
-2. Choose **Code → Download ZIP**, then extract the ZIP to a folder on your laptop.
-3. In RStudio, open the extracted folder as a project (or set your working directory to that folder). The folder should contain `app.R` and the `R` subfolder.
-4. Run the app from the R console:
+Or use RStudio to clone it as a new project.
+
+After that:
+
+1. Open the CKMRshiny RStudio project (or set your working directory to that folder). The folder should contain `app.R` and the `R` subfolder.
+2. Run the app from Rstudio by opening app.R and choosing "Run App"
+
+Or
+
+run the app from the R console:
 
 ```r
 shiny::runApp()

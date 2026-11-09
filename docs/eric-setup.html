@@ -264,17 +264,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="download-and-run-ckmrshiny" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-run-ckmrshiny">Download and run CKMRshiny</h2>
 <p>CKMRshiny is a repository that contains a couple of Shiny applications and a few R Markdown documents, rather than an R package. You do not install it with <code>install_github()</code>.</p>
-<p><strong>Eric will provide the CKMRshiny repository link with the hands-on materials, once they are ready</strong>. Installing the packages above is enough to prepare for now. Once you have that link:</p>
-<p><em>This portion is subject to change.</em></p>
+<p>The best way to get it is to clone it from GitHub. Either:</p>
+<ul>
+<li>Get it with <code>git clone</code> on the command line:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/eriqande/CKMRshiny.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or use RStudio to clone it as a new project.</p>
+<p>After that:</p>
 <ol type="1">
-<li>Open the CKMRshiny repository supplied by Eric.</li>
-<li>Choose <strong>Code → Download ZIP</strong>, then extract the ZIP to a folder on your laptop.</li>
-<li>In RStudio, open the extracted folder as a project (or set your working directory to that folder). The folder should contain <code>app.R</code> and the <code>R</code> subfolder.</li>
-<li>Run the app from the R console:</li>
+<li>Open the CKMRshiny RStudio project (or set your working directory to that folder). The folder should contain <code>app.R</code> and the <code>R</code> subfolder.</li>
+<li>Run the app from Rstudio by opening app.R and choosing “Run App”</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or</p>
+<p>run the app from the R console:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Alternatively, give <code>runApp()</code> the path to the extracted folder:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"path/to/CKMRshiny-main"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>(<span class="st">"path/to/CKMRshiny-main"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Replace the example path with the actual folder on your computer. The app should open with tabs for equal reproduction, randomly unequal reproduction, and size-based reproduction. Run a small trial to check that plots appear. Stop the app with RStudio’s <strong>Stop</strong> button or by pressing <strong>Esc</strong> in the R console.</p>
 </section>
 <section id="if-you-get-stuck" class="level2">
