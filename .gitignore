@@ -10,4 +10,4 @@ slides/_output/
 .CKMRshiny
 /.quarto/
 **/*.quarto_ipynb
-background
+/background
