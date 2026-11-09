@@ -13,10 +13,7 @@ A brief tour of inheritance, genotyping, sequencing, etc.
 - Alleles in populations
 - Theory of inferring kinship\*
 - Genotyping technologies and genomic sequencing
-- Overview of some special, relevant topics:
-  - mtDNA, maternal inheritance
-  - Genetically inferred sex
-  - Epigenetic ageing
+
 
 ::: {.outline-note}
 \*We will address more practical issues in a separate session.

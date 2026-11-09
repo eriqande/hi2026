@@ -21,6 +21,11 @@ Hawaiʻi CKMR Workshop 2026
 - Capture and amplicon sequencing
 - Microhaplotypes
 - Error in genotyping
+- Overview of some special, relevant topics:
+  - mtDNA, maternal inheritance
+  - Genetically inferred sex
+  - Epigenetic ageing
+
 
 
 
@@ -616,6 +621,38 @@ Amplicon sequencing can also recover microsatellite variation. Assess reproducib
 Each point is an an allele 
 
 Green points have too many homozygotes ==> null alleles at the locus
+
+
+
+## Maternally inherited mtDNA
+
+:::{.columns}
+:::{.column width="45%"}
+![](assets/genotyping/mtdna-khan.png)
+:::
+::: {.column width="55%"}
+* mtDNA is a separate DNA molecule housed in the mitochondria
+* maternally inherited; circular, $\approx$ 16,000 bp 
+* Multiple copies in each mitochondrion + lots of mitochrondia = lots of copies
+* Typically all copies within an individual are identical in sequence
+
+* Used to be mtDNA was the _only_ gene sequence available
+* Fell out of favor when nuclear genotyping came online, but....
+* Super useful for determining the sex of the unobserved parent of two half-siblings
+
+:::
+:::
+
+
+## mtDNA inheritance and and half-sibling pairs
+
+* mtDNA carried by an individual is IBD with that carried by Mom
+* Consequently it is also identical in state / sequence
+* If the kids $A$ AND $B$ are a maternal half-sibling pair (MHSP), then they both
+inherited their mtDNA from mom.
+$$
+P(M_A = m_i, M_B = m_i \mid \mathrm{MHSP}) = f(m_i)
+$$
 
 
 ## Conclusions
