@@ -8,8 +8,10 @@ Install [Quarto](https://quarto.org/docs/get-started/), then run from this direc
 
 ```sh
 quarto preview
-quarto render
+./build.sh
 ```
+
+`./build.sh` renders the website, renders all decks listed in `slides/_quarto.yml`, and copies the slides and their supporting assets into `docs/slides/`. It can be invoked from any directory. To render only the website, use `quarto render`.
 
 The rendered website goes into `docs/`. R code blocks are displayed as participant instructions and are not executed during rendering. Rendering therefore does not require the workshop R packages.
 
@@ -37,7 +39,7 @@ The variable only controls the URL; it does not grant access to a private reposi
 
 ## Publish with GitHub Pages
 
-1. Run `quarto render` and review the result.
+1. Run `./build.sh` and review the website and slides.
 2. Commit and push the source files **and `docs/`** to the GitHub repository.
 3. In the repository's **Settings → Pages**, select **Deploy from a branch**, choose the branch containing the site, and select **`/docs`** as the folder.
 

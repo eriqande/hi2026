@@ -128,7 +128,7 @@ Haploid gamete
 :::
 :::
 
-- At any point on an autosome, a gamete gets a copy of maternal or paternal DNA, each with probability $\tfrac12$.
+- At any point on an autosome, a gamete gets a copy of its progenitor's maternal or paternal DNA, each with probability $\tfrac12$.
 - Independently for each chromosome.
 - Maternal versus paternal origin of sites on the **same chromosome is not independent**.
 
@@ -567,7 +567,7 @@ When both relationships are among **unrelated, parent–offspring, and self/clon
 
 For the other relationship comparisons considered here, physical linkage generally means it is not a proper log-likelihood ratio.
 
-We can call it **pseudo log-odds**, or a **PLOD**. It is still very useful.
+We can call it a **pseudo log-odds**, or a **PLOD**. It is still very useful.
 
 
 ::: {.notes}
@@ -619,3 +619,10 @@ Source: slide 30 of the supplied Genetics Fundamentals.pptx and matching PDF. Fi
 ::: {.notes}
 Source: slide 31 of the supplied Genetics Fundamentals.pptx and matching PDF. Figures retain the original artwork; prose and equations are editable Markdown and LaTeX.
 :::
+
+
+## Next session...
+
+* How do we observe genotypes?
+* What about errors in genotypes?
+* etc...

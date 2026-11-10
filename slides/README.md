@@ -6,6 +6,8 @@
 
 This directory is a separate Quarto project so that Reveal.js presentation settings stay independent of the website's book settings.
 
+To build the website and all slides together, run `./build.sh` from the repository root (or `../build.sh` from this directory). The script copies the complete slide output into `docs/slides/` for GitHub Pages.
+
 From this directory:
 
 ```sh

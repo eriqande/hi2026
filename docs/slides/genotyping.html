@@ -163,11 +163,19 @@
 <li>Capture and amplicon sequencing</li>
 <li>Microhaplotypes</li>
 <li>Error in genotyping</li>
+<li>Overview of some special, relevant topics:
+<ul>
+<li>mtDNA, maternal inheritance</li>
+<li>Genetically inferred sex</li>
+<li>Epigenetic ageing</li>
+</ul></li>
 </ul>
 </section>
 <section id="sample-aquisition" class="slide level2">
 <h2>Sample aquisition</h2>
-<p>TODOSTILL</p>
+<p>Lots of expertise in this room on that. I like Mark’s summary:</p>
+
+<img data-src="assets/genotyping/slice-or-poke.png" class="r-stretch"><p>Key point: DNA samples can be obtained quickly and non-lethally</p>
 </section>
 <section id="next-generation-sequencing" class="slide level2">
 <h2>Next-generation sequencing</h2>
@@ -266,6 +274,10 @@
       }</style></aside>
 </section>
 <section id="variant-detection-and-genotype-calling" class="slide level2">
+<h2>Variant detection and genotype calling</h2>
+
+<img data-src="assets/genotyping/squirmy-chroms.png" class="r-stretch"></section>
+<section id="variant-detection-and-genotype-calling-1" class="slide level2">
 <h2>Variant detection and genotype calling</h2>
 <p><strong>Variant detection:</strong> identify genomic positions that vary among sampled individuals, such as SNPs and indels.</p>
 <p><strong>Genotype calling:</strong> infer an individual’s alleles at a particular variant.</p>
@@ -463,52 +475,6 @@ X=2&amp;0&amp;0&amp;1
 </ul>
 </div></div>
 </section>
-<section id="a-model-for-heterozygote-miscalls-1" class="slide level2 model-slide">
-<h2>A model for heterozygote miscalls</h2>
-<p>For individual <span class="math inline">i</span> at SNP <span class="math inline">\ell</span>:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Symbol</th>
-<th style="text-align: left;">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">p_\ell</span></td>
-<td style="text-align: left;">Unknown alternate-allele frequency</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">X_{i\ell}</span></td>
-<td style="text-align: left;">True, unobserved genotype: 0, 1, or 2 alternate copies</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">Y_{i\ell}</span></td>
-<td style="text-align: left;">Observed, possibly incorrect genotype call</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">m</span></td>
-<td style="text-align: left;">Probability a true heterozygote is called a homozygote</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">p_\ell\sim\operatorname{Beta}(\tfrac12,\tfrac12),
-\qquad X_{i\ell}\mid p_\ell\sim\operatorname{Binomial}(2,p_\ell).</span></p>
-<p>The second expression assumes HWE within the population being modelled.</p>
-<aside class="notes">
-<p>2019 slide 24 defines these variables and gives alpha=(1/2,1/2). Rebuilt as editable text and LaTeX instead of using its raster model diagram, which contains an embedded NOAA logo. The source does not specify a prior for m or a complete genotype transition matrix.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
 <section id="estimating-m-with-mcmc" class="slide level2 genotyping-columns">
 <h2>Estimating <span class="math inline">m</span> with MCMC</h2>
 <div class="columns">
@@ -520,174 +486,59 @@ X=2&amp;0&amp;0&amp;1
 <p><img data-src="assets/genotyping/lobster-mcmc.png" class="method-figure" alt="Original lobster MCMC trace for the heterozygote-miscall parameter, approaching roughly one-quarter."></p>
 </div></div>
 <p>Infer <span class="math inline">m</span> while allowing uncertainty in allele frequencies and latent true genotypes. Assess burn-in, mixing, and convergence before interpreting summaries.</p>
-<aside class="notes">
-<p>Original traces from 2019 slides 25–26, not newly fitted estimates. The inference relies on the model, including its population assumptions. Population structure or inbreeding can also create heterozygote deficits and must be considered.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="published-data-survey-bonnethead-shark" class="slide level2 genotyping-figure">
 <h2>Published-data survey: bonnethead shark</h2>
 
 <img data-src="assets/genotyping/bonnethead-miscall.png" class="genotyping-wide r-stretch" alt="Original bonnethead-shark genotype-frequency diagnostic, labelled with estimated miscall rate 0.01."><p>The original analysis estimated <span class="math inline">\widehat m=0.01</span>.</p>
-<aside class="notes">
-<p>2019 slide 27. Historical dataset-specific estimate, not recomputed.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="published-data-survey-red-drum" class="slide level2 genotyping-figure">
 <h2>Published-data survey: red drum</h2>
 
 <img data-src="assets/genotyping/red-drum-miscall.png" class="genotyping-wide r-stretch" alt="Original red-drum genotype-frequency diagnostic, labelled with estimated miscall rate 0.05."><p>The original analysis estimated <span class="math inline">\widehat m=0.05</span>.</p>
-<aside class="notes">
-<p>2019 slide 28. Historical dataset-specific estimate, not recomputed.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="published-data-survey-chinook-salmon" class="slide level2 genotyping-figure">
 <h2>Published-data survey: Chinook salmon</h2>
 
 <img data-src="assets/genotyping/chinook-miscall.png" class="genotyping-wide r-stretch" alt="Original Columbia River Chinook salmon diagnostic, labelled with estimated miscall rate 0.17."><p>The original analysis estimated <span class="math inline">\widehat m=0.17</span>.</p>
-<aside class="notes">
-<p>2019 slide 29. Historical dataset-specific estimate, not recomputed.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="published-data-survey-snails" class="slide level2 genotyping-figure">
 <h2>Published-data survey: snails</h2>
 
 <img data-src="assets/genotyping/snail-miscall.png" class="genotyping-wide r-stretch" alt="Original snail genotype-frequency diagnostic, labelled with estimated miscall rate 0.45."><p>The original analysis estimated <span class="math inline">\widehat m=0.45</span>.</p>
-<aside class="notes">
-<p>The four survey examples are preserved from 2019 slides 27–30. Estimates are historical, model-dependent results from those particular datasets, not species-wide error rates or new estimates. The source slides do not give full bibliographic metadata for every dataset.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="miscall-and-read-depth" class="slide level2 genotyping-figure">
 <h2>Miscall and read depth</h2>
 
 <img data-src="assets/genotyping/depth-miscall.png" class="genotyping-wide r-stretch" alt="Original red-drum plot shows higher heterozygote-miscall estimates at low mean read depth and lower estimates at high depth."><p>In this red-drum example, low-depth groups have higher estimated miscall rates.</p>
 <p>Check accuracy and coverage distributions; <strong>mean depth alone can conceal poorly covered loci or samples</strong>.</p>
-<aside class="notes">
-<p>2019 slide 31. Original red-drum empirical plot.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="why-the-downstream-analysis-matters" class="slide level2">
-<h2>Why the downstream analysis matters</h2>
+<section id="het-miscall-effect-on-downstream-analyses" class="slide level2">
+<h2>Het miscall effect on downstream analyses</h2>
+<p>Depends on what you are using RAD for</p>
 <ul>
-<li><strong>Allele frequencies:</strong> symmetric heterozygote-to-homozygote errors can partly cancel in the average allele count.</li>
-<li><strong>Heterozygosity and outlier analyses:</strong> dropout changes genotype frequencies and can distort the patterns being tested.</li>
-<li><strong>Relationship inference:</strong> an error can turn a genuine relative into an apparent mismatch.</li>
+<li><strong>Allele frequencies:</strong> symmetric heterozygote-to-homozygote errors can partly cancel in the average allele count. (Note a huge deal)</li>
+<li><strong>Heterozygosity and outlier analyses:</strong> dropout changes genotype frequencies and can distort the patterns being tested. (Potentially problematic)</li>
+<li><strong>Relationship inference:</strong> an error can turn a genuine relative into an apparent mismatch. (Downright disastrous)</li>
 </ul>
 <p>An error rate that seems modest for one task can be unacceptable for another.</p>
-<aside class="notes">
-<p>Adapted from 2019 slide 32. The allele-frequency statement is qualified by symmetry; it is not valid for arbitrary allele-specific dropout. Algebraically, under the displayed symmetric observation model E(Y)/2=p even though heterozygosity is reduced.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="rad-for-ckmr-take-home-messages" class="slide level2">
 <h2>RAD for CKMR: take-home messages</h2>
 <ul>
 <li>Use pilot data to evaluate error, missingness, and locus consistency.</li>
 <li>Avoid treating “more than 10×” as a universal accuracy threshold.</li>
+<li>Estimate genotypes using their posterior with a proper model.</li>
 <li>Examine heterozygote miscalls, not just the percentage of missing calls.</li>
 <li>RAD can support marker discovery or independent confirmation of candidate kin pairs.</li>
 <li>Decide whether it meets the precision requirements of the particular CKMR study.</li>
 </ul>
-<aside class="notes">
-<p>2019 slide 33 and 2022 What RAD gets you. Replaces a blanket historical judgement about RAD readiness with study-specific validation criteria.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="capture-arrays" class="slide level2 genotyping-figure">
 <h2>Capture arrays</h2>
 
 <img data-src="assets/genotyping/capture.png" class="genotyping-wide r-stretch" alt="Capture probes enrich selected genomic fragments; original image credit Arbor Biosciences."><p>Probes or “baits” hybridize to selected sequences, enriching the library for those targets.</p>
 <p>Cost and performance depend on probe design, sample scale, and the sequencing allocation.</p>
-<aside class="notes">
-<p>2022 Capture arrays; 2019 slide 34. Figure credit: Arbor Biosciences.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="rad-plus-capture" class="slide level2">
 <h2>RAD plus capture</h2>
@@ -696,24 +547,10 @@ X=2&amp;0&amp;0&amp;1
 <li>Enrich a selected subset of RAD fragments using capture probes.</li>
 <li>Concentrate sequencing on chosen loci rather than every fragment in the original RAD library.</li>
 <li>Examples include <strong>RAPTURE</strong> and <strong>DArTcap</strong>.</li>
-<li>Ask for a quote covering panel design, library preparation, sequencing, and analysis.</li>
+<li>DArtcap was a DArt service at some point. It might be renamed.<br>
+</li>
+<li>(Discussion topic for later: doing genotyping in-house or through a service..)</li>
 </ul>
-<div class="source-line">
-<p><a href="https://www.diversityarrays.com/services/pricing/">DArT pricing and quotation policy</a>, checked November 5, 2026.</p>
-</div>
-<aside class="notes">
-<p>2022 Combination RAD + Capture; 2019 slide 35. Removed the old US$1–5/sample claim: it was an historical genotyping-cost example, not a verified current all-in service price. DArT publishes catalogue prices in its ordering system and offers project-specific quotations.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="amplicon-sequencing" class="slide level2">
 <h2>Amplicon sequencing</h2>
@@ -727,19 +564,6 @@ X=2&amp;0&amp;0&amp;1
 <div class="source-line">
 <p><a href="https://doi.org/10.1111/1755-0998.12357">GT-seq: Campbell et al.&nbsp;(2015)</a></p>
 </div>
-<aside class="notes">
-<p>2022 Amplicon Sequencing; 2019 slide 36. GT-seq reference: Campbell et al., doi:10.1111/1755-0998.12357.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="developing-an-amplicon-panel" class="slide level2">
 <h2>Developing an amplicon panel</h2>
@@ -750,66 +574,10 @@ X=2&amp;0&amp;0&amp;1
 <li>Rebalance or remove “high-rollers” that consume a disproportionate share of reads.</li>
 <li>Recheck coverage and genotype quality after each revision.</li>
 </ul>
-<p>The 2019 examples included parent–offspring and full-sibling panels using roughly <strong>80–130 amplicons with microhaplotypes</strong>. That is an example, not a universal panel-size prescription.</p>
-<aside class="notes">
-<p>Restored from 2019 slides 37–38. Panel sizes are historical examples.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="amplicon-genotyping-scale-affects-cost" class="slide level2 price-slide">
-<h2>Amplicon genotyping: scale affects cost</h2>
-<p>A published <strong>GT-seq 150 bp</strong> service example from Oregon State includes DNA extraction and genotyping:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Batch</th>
-<th style="text-align: right;">Published batch fee</th>
-<th style="text-align: right;">Calculated cost per sample</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">94 samples</td>
-<td style="text-align: right;">US$6,936</td>
-<td style="text-align: right;">US$73.79</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">752 samples</td>
-<td style="text-align: right;">US$12,878</td>
-<td style="text-align: right;">US$17.13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1,880 samples</td>
-<td style="text-align: right;">US$22,894</td>
-<td style="text-align: right;">US$12.18</td>
-</tr>
-</tbody>
-</table>
-<div class="source-line">
-<p><a href="https://fees.oregonstate.edu/Public/ViewIEFeeDetail.aspx?ID=16141&amp;ietype=i">OSU fee 16141</a>, updated April 16, 2025; current public listing checked November 5, 2026. These are batch-fee quotients, not a quote for a new panel.</p>
-</div>
-<aside class="notes">
-<p>Replaces the historical roughly US$7/fish example. Per-sample values are calculations from the published fee and batch size, rounded to cents. Do not compare directly with lane-only sequencing or in-house reagent costs. Confirm panel-development, analysis, and other project-specific charges with the provider.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>This can be laborious, and involves a sunken cost, but is necessary.</p>
+<ul>
+<li>Once done, amplicon sequencing can be quite cost effective.</li>
+</ul>
 </section>
 <section id="what-variation-do-we-retain" class="slide level2">
 <h2>What variation do we retain?</h2>
@@ -819,110 +587,34 @@ X=2&amp;0&amp;0&amp;1
 <li>A <strong>microhaplotype</strong> combining linked variants</li>
 <li>A microsatellite allele inferred from its sequence</li>
 </ul>
-<p>Different representations retain different amounts of information from the same reads.</p>
-<aside class="notes">
-<p>Restored from 2019 slides 39–40.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="phase-is-often-discarded" class="slide level2 phase-slide">
-<h2>Phase is often discarded</h2>
-<p>Suppose the reads at one locus show:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Read-supported sequence</th>
-<th style="text-align: center;">SNP 1</th>
-<th style="text-align: center;">SNP 2</th>
-<th style="text-align: center;">SNP 3</th>
-<th style="text-align: right;">Supporting reads</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Chromosome copy A</td>
-<td style="text-align: center;">A</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">T</td>
-<td style="text-align: right;">22</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Chromosome copy B</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">C</td>
-<td style="text-align: center;">C</td>
-<td style="text-align: right;">31</td>
-</tr>
-</tbody>
-</table>
-<p>Reporting separate SNP genotypes gives <strong>A/G</strong>, <strong>C/G</strong>, and <strong>C/T</strong>.</p>
-<p>Keeping only SNP 2 gives <strong>C/G</strong>.</p>
-<p>Both choices discard some of the observed association of bases along each chromosome copy.</p>
-<aside class="notes">
-<p>Rebuilt as editable text/table from the example in 2019 slide 41, using exactly its two sequences and read counts.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="single-snps-in-amplicons" class="slide level2">
+<h2>Single SNPs in amplicons</h2>
+<ul>
+<li>Within each locus (small sequenced region). Often only one SNP (possibly out of several) will be retained.<br>
+</li>
+<li>Convenient for methods that require biallelic markers.</li>
+<li>Simple genotyping error models are realistic.</li>
+<li>Does not make optimal use of the information in the data.</li>
+</ul>
+</section>
+<section id="phase-of-snps-is-often-ignored" class="slide level2">
+<h2>Phase of SNPs is often ignored</h2>
+<p>If this is observed:</p>
+
+<img data-src="assets/genotyping/pre-microhap-snps.png" class="quarto-figure quarto-figure-center r-stretch"><p>The first treats the genotypes as independent (wrong!); the second tosses useful info</p>
 </section>
 <section id="microhaplotypes-retain-the-phase" class="slide level2 phase-slide">
 <h2>Microhaplotypes retain the phase</h2>
-<p>The same reads identify two alleles at locus <span class="math inline">X</span>:</p>
-<p><span class="math display">G_X=\{\mathrm{AGT},\ \mathrm{GCC}\}.</span></p>
-<ul>
-<li>Each distinct linked sequence is recorded as an allele.</li>
-<li>The locus can have more than two alleles in the population.</li>
-<li>Phase comes from observations on the same sequenced fragment, where the variants are spanned by that fragment.</li>
-<li>Do not treat linked SNPs from this same locus as independent loci.</li>
-</ul>
-<aside class="notes">
-<p>2019 slide 42. Preserves the AGT/GCC example. Phase across disconnected reads is not supplied merely by calling each SNP.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>If this is observed:</p>
+
+<img data-src="assets/genotyping/old-microhap.png" class="quarto-figure quarto-figure-center r-stretch"><p>Each haplotypic combination (AGT or GCC) is an allele.</p>
 </section>
 <section id="inspecting-microhaplotype-calls" class="slide level2 genotyping-figure">
 <h2>Inspecting microhaplotype calls</h2>
 
-<img data-src="assets/genotyping/microhaplot.png" class="genotyping-wide r-stretch" alt="Original microhaplot application screenshot displaying read depth, allelic read ratios, and genotype-call controls."><p>Inspect read support, allelic balance, and locus behavior before accepting calls.</p>
+<img data-src="assets/genotyping/microhaplot.png" class="genotyping-wide r-stretch" alt="Original microhaplot application screenshot displaying read depth, allelic read ratios, and genotype-call controls."><p>Inspect read support, allelic balance, and locus behavior to build well-behaved panels.</p>
 <p><a href="https://github.com/ngthomas/microhaplot"><code>microhaplot</code> software</a></p>
-<aside class="notes">
-<p>2019 slide 43. Screenshot from the microhaplot software by Thomas Ng and collaborators: https://github.com/ngthomas/microhaplot .</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="increased-heterozygosity" class="slide level2 genotyping-columns">
 <h2>Increased heterozygosity</h2>
@@ -933,6 +625,7 @@ X=2&amp;0&amp;0&amp;1
 <p>At 165 loci, compare each microhaplotype with the single SNP having the highest minor-allele frequency in that region.</p>
 <p>A biallelic SNP has maximum expected heterozygosity <strong>0.5</strong>.</p>
 <p>A multi-allelic microhaplotype can exceed that limit.</p>
+<p><span class="math inline">\uparrow</span> heterozygosity = <span class="math inline">\uparrow</span> Power for kinship detection</p>
 </div></div>
 <div class="source-line">
 <p><a href="https://doi.org/10.1111/1755-0998.12737">Baetscher et al.&nbsp;(2018), Figure 2</a></p>
@@ -983,28 +676,23 @@ X=2&amp;0&amp;0&amp;1
           display:block!important;
       }</style></aside>
 </section>
+<section id="you-still-need-a-lot-of-amplicons-for-half-siblings" class="slide level2">
+<h2>You still need a lot of amplicons for half-siblings</h2>
+
+<img data-src="assets/genotyping/hs-microhap-fprs.png" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<li>15,000 samples <span class="math inline">\Longrightarrow</span> <span class="math inline">\approx</span> 100 million pairs <span class="math inline">\Longrightarrow</span> Need FPR <span class="math inline">\approx 10^{-9}</span></li>
+<li>That is at least two plates of amplicons</li>
+</ul>
+</section>
 <section id="microhaplotypes-in-a-ckmr-panel" class="slide level2">
 <h2>Microhaplotypes in a CKMR panel</h2>
 <ul>
 <li>Multiple alleles can make each independently inherited locus more informative.</li>
 <li>Retaining phase can improve power without adding a new amplicon.</li>
 <li>Loci still need reliable genotype calls and suitable population allele-frequency estimates.</li>
-<li>Independence among loci and linkage effects remain relevant.</li>
-<li>Validate performance for the relationship classes the study actually uses.</li>
+<li>Dependence among loci from physical linkage remains relevant (though reduced compared to dense SNP data).</li>
+<li>Validate performance for the relationship classes the study actually uses (CKMRsim).</li>
 </ul>
-<aside class="notes">
-<p>Synthesis of the 2019 microhaplotype section, including Baetscher et al.&nbsp;2018; intended to connect to the genetics fundamentals presentation. No new empirical performance estimates are asserted.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="microsatellites-from-sequencing" class="slide level2 genotyping-figure">
 <h2>Microsatellites from sequencing</h2>
@@ -1013,19 +701,6 @@ X=2&amp;0&amp;0&amp;1
 <div class="source-line">
 <p><a href="https://doi.org/10.1111/eva.12606">Bradbury et al.&nbsp;(2018)</a>; <a href="https://doi.org/10.1111/1755-0998.12561">MEGASAT: Zhan et al.&nbsp;(2017)</a></p>
 </div>
-<aside class="notes">
-<p>2022 Microsatellites from Next Generation Sequencing; 2019 slides 46–47. Original Bradbury et al.&nbsp;2018 article image retained; doi:10.1111/eva.12606. MEGASAT reference doi:10.1111/1755-0998.12561.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="genotyping-error-models" class="slide level2">
 <h2>Genotyping error models</h2>
@@ -1035,19 +710,122 @@ X=2&amp;0&amp;0&amp;1
 <li>Systematic allele-specific loss differs from stochastic loss at low coverage.</li>
 <li>Assess how error changes the distributions of kinship evidence and the resulting false-positive and false-negative rates.</li>
 </ul>
-<aside class="notes">
-<p>2019 slide 48. Inference and power calculations must match the observation process and marker representation. CKMRsim can support exploration of the effects of genotyping error on kin-identification power.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section>
+<section id="null-alleles-occur-in-amplicon-sequencing-as-well-as-rad-seq" class="slide level2">
+<h2>Null alleles occur in amplicon sequencing as well as RAD-seq</h2>
+<p>96 microhaplotypes in 6,000 kelp rockfish</p>
+
+<img data-src="assets/genotyping/amplicon-nulls.png" class="quarto-figure quarto-figure-center r-stretch"><p>Each point is an an allele</p>
+<p>Green points have too many homozygotes ==&gt; null alleles at the locus</p>
+</section>
+<section id="darttag-probe-based-amplicon-creation-with-a-common-primer-pair" class="slide level2">
+<h2>DaRTTag: “Probe-based amplicon creation with a common primer pair”</h2>
+<p>The “probes” consist of two “sticky-bits” on a “backbone” designed to target flanking sequence around a variant or variants you want to sequence.</p>
+
+<img data-src="assets/genotyping/dart-tag-probe-creation.png" class="r-stretch"><p>(Krishnakumar et al.&nbsp;2008, PNAS)</p>
+</section>
+<section id="darttag-probe-based-amplicon-creation-with-a-common-primer-pair-1" class="slide level2">
+<h2>DaRTTag: “Probe-based amplicon creation with a common primer pair”</h2>
+<p>The two sticky ends of the probe make a circle and the target sequence is synthesized (and gap-filled).</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><img data-src="assets/genotyping/dart-tag-circles.png"></p>
+</div><div class="column" style="width:40%;">
+<p>Not shown in this original paper:</p>
+<ol type="1">
+<li>additional digestion step removing non-circularized DNA.</li>
+<li>addition of barcodes and Illumina adapters.</li>
+</ol>
+<p>The cool thing is that after that you have amplicons, but all the different target sequences are using the same pair of primers.</p>
+</div></div>
+<p>(Krishnakumar et al.&nbsp;2008, PNAS)</p>
+</section>
+<section id="darttag-probe-based-amplicon-creation-with-a-common-primer-pair-2" class="slide level2">
+<h2>DaRTTag: “Probe-based amplicon creation with a common primer pair”</h2>
+<ul>
+<li>Although this uses probes, it is fundamentally not a capture array.</li>
+<li>Although this PCR-amplifies little amplicons, it is fundamentally different than “GTseq” or standard amplicon approaches.</li>
+<li>In GTseq, each amplicon is amplified using its own primer pair.</li>
+<li>When many primer pairs are placed together into a PCR soup, they don’t often play nicely
+<ul>
+<li>beyond 400 or 500 amplicons, things get squirrely</li>
+</ul></li>
+<li>Apparently not so with DaRTTag. You can put thousands of targets in a single panel</li>
+<li>Matt L: $12 per sample, extraction included for 4,000 SNPs?</li>
+<li>These can be analyzed as microhaplotypes, too.</li>
+<li>Targeting new variants is straightforward if you know the flanking sequence.</li>
+</ul>
+</section>
+<section id="maternally-inherited-mtdna" class="slide level2">
+<h2>Maternally inherited mtDNA</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="assets/genotyping/mtdna-khan.png"></p>
+</div><div class="column" style="width:55%;">
+<ul>
+<li><p>mtDNA is a separate DNA molecule housed in the mitochondria</p></li>
+<li><p>maternally inherited; circular, <span class="math inline">\approx</span> 16,000 bp</p></li>
+<li><p>Multiple copies in each mitochondrion + lots of mitochrondia = lots of copies</p></li>
+<li><p>Typically all copies within an individual are identical in sequence</p></li>
+<li><p>Used to be mtDNA was the <em>only</em> gene sequence available</p></li>
+<li><p>Fell out of favor when nuclear genotyping came online, but….</p></li>
+<li><p>Super useful for determining the sex of the unobserved parent of two half-siblings</p></li>
+</ul>
+</div></div>
+</section>
+<section id="mtdna-inheritance-and-and-half-sibling-pairs" class="slide level2">
+<h2>mtDNA inheritance and and half-sibling pairs</h2>
+<ul>
+<li>mtDNA carried by an individual is IBD with that carried by Mom</li>
+<li>Consequently it is also identical in state / sequence</li>
+<li>If the kids <span class="math inline">A</span> and <span class="math inline">B</span> are a maternal half-sibling pair (MHSP), then they both inherited their mtDNA from mom. <span class="math display">
+\begin{aligned}
+P(M_A = m_i, M_B = m_i \mid \mathrm{MHSP}) &amp;= f(m_i) \\
+P(M_A = m_i, M_B = m_j \mid \mathrm{MHSP}) &amp;= 0 \\
+\end{aligned}
+</span></li>
+<li>If they are paternal half sibs, the each got their mtDNA, independently, “from the population” <span class="math display">
+\begin{aligned}
+P(M_A = m_i, M_B = m_i \mid \mathrm{PHSP}) &amp;= [f(m_i)]^2 \\
+P(M_A = m_i, M_B = m_j \mid \mathrm{PHSP}) &amp;= f(m_i)f(m_j) \\
+\end{aligned}
+</span></li>
+</ul>
+</section>
+<section id="mtdna-inheritance-and-and-half-sibling-pairs-1" class="slide level2">
+<h2>mtDNA inheritance and and half-sibling pairs</h2>
+<ul>
+<li>Easiest to distinguish Paternal from Maternal when mtDNA haplotypes are numerous and all at low freuquency.</li>
+<li>Best way to achieve that is by sequencing the whole mtDNA molecule.</li>
+<li>Only need to do this on identified HSPs</li>
+<li>It exists at high copy number (100-1000) in most cells. So, if you target 1X coverage you should get 100-1000 reads at any place in the mtDNA on average.</li>
+<li>Phil Morin’s early-days WG sequencing stories</li>
+<li>In high diversity species, there are many different haplotypes. Not necessarily so in small populations.</li>
+</ul>
+</section>
+<section id="epigenetic-ageing" class="slide level2">
+<h2>Epigenetic Ageing</h2>
+<p>Much gene regulation is orchestrated by methylation of CpG sites.</p>
+<p><img data-src="assets/genotyping/methylation.png"> Certain sites predictably change in methylation status through the aging process</p>
+</section>
+<section id="epigenetic-ageing-1" class="slide level2">
+<h2>Epigenetic Ageing</h2>
+<p>Methylation of CpG sites can be detected through bisfulfite sequencing</p>
+
+<img data-src="assets/genotyping/bisulfite-conversion.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="epigenetic-ageing-2" class="slide level2">
+<h2>Epigenetic Ageing</h2>
+<ul>
+<li>Do bisulfite sequencing on a known-age training set of individuals</li>
+<li>Target lots of CpG sites (bisulfite RADseq, etc.)</li>
+<li>Find those sites that predictably change with age</li>
+<li>Test prediction on a test set</li>
+<li>Design amplicons and DaRTTAG type assays for high-throughput bisulfite sequencing</li>
+</ul>
+</section>
+<section id="epigenetic-ageing-3" class="slide level2">
+<h2>Epigenetic Ageing</h2>
+<p><img data-src="assets/genotyping/weber-epi.png" class="quarto-figure quarto-figure-center"> Available from the same tissue sample as the rest of the DNA</p>
 </section>
 <section id="conclusions" class="slide level2">
 <h2>Conclusions</h2>
@@ -1057,44 +835,10 @@ X=2&amp;0&amp;0&amp;1
 <li>RAD heterozygote-miscall diagnostics provide a useful warning, but depend on population and error-model assumptions.</li>
 <li>Targeting loci can concentrate coverage; retaining microhaplotypes can retain more information per locus.</li>
 <li>Choose and validate a genotyping panel against the needs of the CKMR design.</li>
+<li>Clean and complete (no holes!) genotyping data is golden.</li>
+<li>Messier, holey data can be handled but it requires a LOT more work and gnashing of teeth. We will briefly descend to the 9th Bolgia of Hell to meet such Sowers of Discord later this week.</li>
+<li>Sex ID markers can be added to a standard amplicon or DaRTTAG panel.</li>
 </ul>
-<aside class="notes">
-<p>Synthesis of 2022 Wrap Up and 2019 slide 49, revised for the merged 2026 presentation.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="sources-and-cost-examples" class="slide level2 reference-slide">
-<h2>Sources and cost examples</h2>
-<ul>
-<li><a href="https://qb3.berkeley.edu/facility/genomics/rates/">2026 sequencing rates: QB3 Berkeley</a></li>
-<li><a href="https://igatechnology.com/sequencing-services/ddrad-genotyping/">Published ddRAD service: IGATech</a></li>
-<li><a href="https://fees.oregonstate.edu/Public/ViewIEFeeDetail.aspx?ID=16141&amp;ietype=i">Published GT-seq batch fees: Oregon State</a></li>
-<li><a href="https://www.diversityarrays.com/services/pricing/">Capture-service pricing policy: DArT</a></li>
-<li><a href="https://doi.org/10.1111/1755-0998.12737">Microhaplotype evidence: Baetscher et al.&nbsp;(2018)</a></li>
-</ul>
-<p>Prices checked November 5, 2026. They are provider-specific examples in the stated currencies; service scope differs among examples.</p>
-<aside class="notes">
-<p>Links to the public provider listings checked on November 5, 2026 and to the primary microhaplotype study. Detailed cost updates are in genotyping-updates.md.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 
 </section>
     </div>
