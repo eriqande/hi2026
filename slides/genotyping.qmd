@@ -755,6 +755,18 @@ Methylation of CpG sites can be detected through bisfulfite sequencing
 Available from the same tissue sample as the rest of the DNA
 
 
+## Sex ID markers
+
+Not all fish have genetic control of sex
+
+If they do, it is sometimes possible to find genomic variants associated with sex.
+
+
+## One big advantage of targeted sequencing
+
+You can add "special purpose" markers to these panels easily.
+
+For example assays for sex
 
 ## Conclusions
 
