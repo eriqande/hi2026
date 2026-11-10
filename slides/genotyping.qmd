@@ -603,7 +603,6 @@ Amplicon sequencing can also recover microsatellite variation. Assess reproducib
 
 
 
-
 ## Genotyping error models
 
 - **Biallelic SNPs:** a dropout-only model can be a useful starting approximation; check whether it matches the data.
@@ -621,6 +620,56 @@ Amplicon sequencing can also recover microsatellite variation. Assess reproducib
 Each point is an an allele 
 
 Green points have too many homozygotes ==> null alleles at the locus
+
+
+## DaRTTag:  "Probe-based amplicon creation with a common primer pair"
+
+The "probes" consist of two "sticky-bits" on a "backbone" designed to target flanking sequence
+around a variant or variants you want to sequence.
+
+![](assets/genotyping/dart-tag-probe-creation.png)
+
+(Krishnakumar et al. 2008, PNAS)
+
+
+## DaRTTag:  "Probe-based amplicon creation with a common primer pair"
+
+The two sticky ends of the probe make a circle and the target sequence is synthesized
+(and gap-filled).
+
+:::{.columns}
+:::{.column width="60%"}
+![](assets/genotyping/dart-tag-circles.png)
+:::
+:::{.column width="40%"}
+Not shown in this original paper:
+
+1. additional digestion step removing non-circularized DNA.
+2. addition of barcodes and Illumina adapters.
+
+The cool thing is that after that you have amplicons, but all the different
+target sequences are using the same pair of primers.
+
+:::
+:::
+
+(Krishnakumar et al. 2008, PNAS)
+
+
+## DaRTTag:  "Probe-based amplicon creation with a common primer pair"
+
+* Although this uses probes, it is fundamentally not a capture array.
+* Although this PCR-amplifies little amplicons, it is fundamentally different than
+"GTseq" or standard amplicon approaches.
+* In GTseq, each amplicon is amplified using its own primer pair.
+* When many primer pairs are placed together into a PCR soup, they don't
+  often play nicely
+    - beyond 400 or 500 amplicons, things get squirrely
+* Apparently not so with DaRTTag.  You can put thousands of targets in a single
+  panel
+* Matt L: $12 per sample, extraction included for 4,000 SNPs?
+* These can be analyzed as microhaplotypes, too.
+* Targeting new variants is straightforward if you know the flanking sequence.
 
 
 
@@ -648,11 +697,63 @@ Green points have too many homozygotes ==> null alleles at the locus
 
 * mtDNA carried by an individual is IBD with that carried by Mom
 * Consequently it is also identical in state / sequence
-* If the kids $A$ AND $B$ are a maternal half-sibling pair (MHSP), then they both
+* If the kids $A$ and $B$ are a maternal half-sibling pair (MHSP), then they both
 inherited their mtDNA from mom.
 $$
-P(M_A = m_i, M_B = m_i \mid \mathrm{MHSP}) = f(m_i)
+\begin{aligned}
+P(M_A = m_i, M_B = m_i \mid \mathrm{MHSP}) &= f(m_i) \\
+P(M_A = m_i, M_B = m_j \mid \mathrm{MHSP}) &= 0 \\
+\end{aligned}
 $$
+* If they are paternal half sibs, the each got their mtDNA, independently, "from the population"
+$$
+\begin{aligned}
+P(M_A = m_i, M_B = m_i \mid \mathrm{PHSP}) &= [f(m_i)]^2 \\
+P(M_A = m_i, M_B = m_j \mid \mathrm{PHSP}) &= f(m_i)f(m_j) \\
+\end{aligned}
+$$
+
+
+## mtDNA inheritance and and half-sibling pairs
+
+* Easiest to distinguish Paternal from Maternal when mtDNA haplotypes are numerous
+and all at low freuquency.
+* Best way to achieve that is by sequencing the whole mtDNA molecule.
+* Only need to do this on identified HSPs
+* It exists at high copy number (100-1000) in most cells.  So, if you target 1X coverage
+you should get 100-1000 reads at any place in the mtDNA on average.
+* Phil Morin's early-days WG sequencing stories 
+* In high diversity species, there are many different haplotypes.  Not necessarily so
+in small populations.
+
+## Epigenetic Ageing
+
+Much gene regulation is orchestrated by methylation of CpG sites.
+
+![](assets/genotyping/methylation.png)
+Certain sites predictably change in methylation status through the aging process
+
+
+## Epigenetic Ageing
+
+Methylation of CpG sites can be detected through bisfulfite sequencing
+
+![](assets/genotyping/bisulfite-conversion.png){fig-align="center"}
+
+
+## Epigenetic Ageing
+
+* Do bisulfite sequencing on a known-age training set of individuals
+* Target lots of CpG sites (bisulfite RADseq, etc.)
+* Find those sites that predictably change with age
+* Test prediction on a test set
+* Design amplicons and DaRTTAG type assays for high-throughput bisulfite sequencing
+
+## Epigenetic Ageing
+
+![](assets/genotyping/weber-epi.png){fig-align="center"}
+Available from the same tissue sample as the rest of the DNA
+
 
 
 ## Conclusions
@@ -664,6 +765,8 @@ $$
 - Choose and validate a genotyping panel against the needs of the CKMR design.
 - Clean and complete (no holes!) genotyping data is golden.
 - Messier, holey data can be handled but it requires a LOT more work and gnashing of teeth. We will briefly descend to the 9th Bolgia of Hell to meet such Sowers of Discord later this week.
+- Sex ID markers can be added to a standard amplicon or DaRTTAG panel.
+
 
 
 

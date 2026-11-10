@@ -4,7 +4,7 @@ pagetitle: "Genetics fundamentals for CKMR"
 
 ## Genetics fundamentals<br>for CKMR {.opening-slide}
 
-A brief tour of inheritance, genotyping, sequencing, etc.
+A brief tour of inheritance, identity by descent, genotypes, and kinship
 
 ## Outline {.outline-slide}
 
@@ -12,7 +12,6 @@ A brief tour of inheritance, genotyping, sequencing, etc.
 - What we can observe: alleles and identity in state
 - Alleles in populations
 - Theory of inferring kinship\*
-- Genotyping technologies and genomic sequencing
 
 
 ::: {.outline-note}
