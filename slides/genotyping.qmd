@@ -718,7 +718,9 @@ $$
 
 * Easiest to distinguish Paternal from Maternal when mtDNA haplotypes are numerous
 and all at low freuquency.
-* Best way to achieve that is by sequencing the whole mtDNA molecule.
+* In high diversity species that might be achieved by sequencing just 900 bp of the
+"D-Loop"
+* In lower diversity species. Consider sequencing the whole mtDNA molecule.
 * Only need to do this on identified HSPs
 * It exists at high copy number (100-1000) in most cells.  So, if you target 1X coverage
 you should get 100-1000 reads at any place in the mtDNA on average.
@@ -751,13 +753,14 @@ Methylation of CpG sites can be detected through bisfulfite sequencing
 
 ## Epigenetic Ageing
 
-![](assets/genotyping/weber-epi.png){fig-align="center"}
+![](assets/genotyping/weber-epi.png){fig-align="center" height="600px"}
+
 Available from the same tissue sample as the rest of the DNA
 
 
 ## Sex ID markers
 
-Not all fish have genetic control of sex
+Not all fish have genetic sex determination
 
 If they do, it is sometimes possible to find genomic variants associated with sex.
 
@@ -766,7 +769,7 @@ If they do, it is sometimes possible to find genomic variants associated with se
 
 You can add "special purpose" markers to these panels easily.
 
-For example assays for sex
+For example, assays for sex
 
 ## Conclusions
 
@@ -776,7 +779,7 @@ For example assays for sex
 - Targeting loci can concentrate coverage; retaining microhaplotypes can retain more information per locus.
 - Choose and validate a genotyping panel against the needs of the CKMR design.
 - Clean and complete (no holes!) genotyping data is golden.
-- Messier, holey data can be handled but it requires a LOT more work and gnashing of teeth. We will briefly descend to the 9th Bolgia of Hell to meet such Sowers of Discord later this week.
+- Messier, holey data can be handled but it requires a LOT more work and gnashing of teeth. We might briefly descend to the 9th Bolgia of Hell to meet such Sowers of Discord later this week.
 - Sex ID markers can be added to a standard amplicon or DaRTTAG panel.
 
 
