@@ -49,8 +49,15 @@ The current agenda is below. Exactly what happens when is flexible: we will adju
 ### Monday, November 9
 
 - **Introduction:** principles, scope, and workshop overview
+    + [Mark's intro slides (must be member of repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/intro26b.pdf)
+    + [Space-toast slides](background/space-toast.pdf)
 - **Parent-offspring pairs (POPs):** simple marine mammal example and model
+    + [Mark's _Delfinus mendax_ slides (must be member of repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/delfi26.pdf)
+    + Delfi_A: ideal data scenario (in `hawaii-ckmr-26` at `./r-scripts/fit_delfi_A.r` )
+    + Tidyverse version of delfi_A in CKMRshiny [(here)](https://github.com/eriqande/CKMRshiny/blob/main/tidy_rmd_examples/fit_delfi_A.Rmd)
 - **Gotchas #1:** because nothing is ever that simple…
+    + Heritable covariate that affects sampling: `fit_delfi_B.r`
+    + POPs, unequal reproduction, size selectivity, etc.  [Eric's CKMRshiny app with POPs](https://github.com/eriqande/CKMRshiny)
 
 ### Tuesday, November 10
 

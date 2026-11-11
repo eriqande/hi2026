@@ -5,6 +5,7 @@ project:
     - .nojekyll
     - background/agenda-v1.pdf
     - background/rcrib26.pdf
+    - background/space-toast.pdf
 
 book:
   title: "Hawaiʻi CKMR Workshop 2026"
