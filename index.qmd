@@ -68,6 +68,18 @@ The current agenda is below. Exactly what happens when is flexible: we will adju
 
 ### Wednesday, November 11
 
+- **Finishing up genetics** (8:30-11:00)
+    + Maternal DNA
+    + Epigenetic aging
+    + Genetic sex identification
+        - For genetically determined sex
+        - Even for environmentally determined sex (using epigenetics)
+    + Genotyping and Sampling discussion
+- **Kinference** (11:00-12:00)
+    + [Mark's kinference slides (must be member of repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/Kinference26.pdf)
+    + Shane Baylis's School Shark demo of Kinference (link not yet available)
+- Fish:
+    + [Mark's _Notogorgius_ slides (must be member of repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/Notog-1-26.pdf)
 - **Missing/uncertain data:** usually this means age
 - **Fish:** a semi-realistic model. The 3rd loop?
 - **Case study #1:** school sharks
@@ -75,7 +87,12 @@ The current agenda is below. Exactly what happens when is flexible: we will adju
 
 ### Thursday, November 12
 
-- **Case study #2:** southern bluefin tuna
+- **Case studies:**
+    + Small populations / approximate Bayesian computation.  Smalltooth sawfish. Paul Conn.
+    + Sidebar:  Mark B:  a few more fish CKMR things.  
+    + Western Atlantic Bluefin Tuna.  Matt Lauretta.
+    + Atlantic red snapper.  Genetics, etc.  Eric
+    + ATL, incorporating kinships into the assessement.  Matt Vincent
 - **Design #1:** so important!
 - **Case study #3:** western Atlantic bluefin tuna and/or bearded seals
 
