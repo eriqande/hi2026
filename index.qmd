@@ -63,6 +63,7 @@ The current agenda is below. Exactly what happens when is flexible: we will adju
 
 - **Half-sibling pairs (HSPs):** shark example
 - **Gotchas #2:** HSPs are a rich source of gotchas
+- **Case study #1:** school sharks
 - **And so to fish:** basic CKMR-driven fish model
 - **Genetics and kin-finding #1:** principles
 
@@ -82,24 +83,27 @@ The current agenda is below. Exactly what happens when is flexible: we will adju
     + [Mark's _Notogorgius_ slides (must be member of repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/Notog-1-26.pdf)
 - **Missing/uncertain data:** usually this means age
 - **Fish:** a semi-realistic model. The 3rd loop?
-- **Case study #1:** school sharks
 - **Kin-finding and genetics #2:** worked examples
 
 ### Thursday, November 12
 
 - **Case studies:**
     + Small populations / approximate Bayesian computation.  Smalltooth sawfish. Paul Conn.
-    + Sidebar:  Mark B:  a few more fish CKMR things.  
+    + Sidebar:  Mark B:  a few more fish CKMR things.  [Southern Sweelips: triCKs and traps (Must be a member of Mark's repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/notog-2-26.pdf)
     + Western Atlantic Bluefin Tuna.  Matt Lauretta.
     + Atlantic red snapper.  Genetics, etc.  Eric
     + ATL, incorporating kinships into the assessement.  Matt Vincent
-- **Design #1:** so important!
-- **Case study #3:** western Atlantic bluefin tuna and/or bearded seals
+- **Design #1:** so important! [Design for CKMR (Must be a member of Mark's repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/Design26.pdf)
+
 
 ### Friday, November 13
 
-- **Design #2:** worked example
-- **Spatial CKMR:** the wild west
+- **Brief microscoping Shiny demo:** 
+    + Just a quick walk-through of a new Shiny front end for Mark's microscoping
+      package. (It's a new tab on CKMRshiny. Pull the changes from
+      [the CKMRshiny repo](https://github.com/eriqande/CKMRshiny))
+- **Spatial CKMR:** The wild west.
+    + [Spatial CKMR: an introduction (Must be a member of Mark's repo)](https://github.com/markbravington/hawaii-ckmr-26/blob/master/slides-etc/Spatial26.pdf)
 
 ### Saturday, November 14, or Sunday, November 15
 
